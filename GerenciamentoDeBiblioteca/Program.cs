@@ -26,6 +26,7 @@ namespace GerenciamentoDeBiblioteca
                 );
 
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            builder.Services.AddScoped<ILivroRepositorio, LivroRepositorio>();
 
             var app = builder.Build();
 
