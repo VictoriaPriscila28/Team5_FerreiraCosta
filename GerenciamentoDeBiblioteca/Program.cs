@@ -1,3 +1,8 @@
+using GerenciamentoDeBiblioteca.Data;
+using GerenciamentoDeBiblioteca.Repositorios;
+using GerenciamentoDeBiblioteca.Repositorios.Interface;
+using Microsoft.EntityFrameworkCore;
+
 namespace GerenciamentoDeBiblioteca
 {
     public class Program
@@ -12,6 +17,15 @@ namespace GerenciamentoDeBiblioteca
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddEntityFrameworkSqlServer()
+                .AddDbContext<SistemaGerenciamentoDBContext>(
+
+                    options => options.UseSqlServer(builder.Configuration.GetConnectionString("Database"))
+                
+                );
+
+            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
             var app = builder.Build();
 

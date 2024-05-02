@@ -1,4 +1,5 @@
-﻿using GerenciamentoDeBiblioteca.Models;
+﻿using GerenciamentoDeBiblioteca.Data.Map;
+using GerenciamentoDeBiblioteca.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GerenciamentoDeBiblioteca.Data
@@ -7,7 +8,10 @@ namespace GerenciamentoDeBiblioteca.Data
     {
         public SistemaGerenciamentoDBContext(DbContextOptions<SistemaGerenciamentoDBContext> options)
             : base(options)
-        {  
+        {
+            Usuarios = Set<UsuarioModel>();
+            Livros = Set<LivroModel>();
+
         }
 
         public DbSet<UsuarioModel> Usuarios { get; set; }
@@ -15,6 +19,8 @@ namespace GerenciamentoDeBiblioteca.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new LivroMap());
             base.OnModelCreating(modelBuilder);
         }
     }

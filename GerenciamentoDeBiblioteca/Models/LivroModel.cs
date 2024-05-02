@@ -1,4 +1,6 @@
-﻿namespace GerenciamentoDeBiblioteca.Models
+﻿using GerenciamentoDeBiblioteca.Enums;
+
+namespace GerenciamentoDeBiblioteca.Models
 {
     public class LivroModel
     {
@@ -6,6 +8,6 @@
         public string? Titulo { get; set; }
         public string? Autor { get; set;}
         public string? Categoria { get; set; }
-        public int Status { get; set; }
+        public StatusLivro Status { get; set; }
     }
 }
