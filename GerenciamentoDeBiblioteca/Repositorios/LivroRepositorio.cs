@@ -14,12 +14,16 @@ namespace GerenciamentoDeBiblioteca.Repositorios
 ;        }
         public async Task<LivroModel> BuscarPorId(int id)
         {
-            return await _dbContext.Livros.FirstOrDefaultAsync(x => x.Id == id);
+            return await _dbContext.Livros
+                .Include (x => x.Usuario)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<LivroModel>> BuscarTodosLivros()
         {
-            return await _dbContext.Livros.ToListAsync();
+            return await _dbContext.Livros
+                .Include (x => x.Usuario)
+                .ToListAsync();
         }
         public async Task<LivroModel> Adicionar(LivroModel livro)
         {

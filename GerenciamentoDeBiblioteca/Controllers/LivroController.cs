@@ -2,10 +2,12 @@
 using GerenciamentoDeBiblioteca.Models;
 using Microsoft.AspNetCore.Mvc;
 using GerenciamentoDeBiblioteca.Repositorios.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace GerenciamentoDeBiblioteca.Controllers
 {
+   
     [Route("api/[controller]")]
     [ApiController]
     public class LivroController : ControllerBase
@@ -54,7 +56,7 @@ namespace GerenciamentoDeBiblioteca.Controllers
             return Ok(apagado);
         }
 
-
+        
     }
         
         
