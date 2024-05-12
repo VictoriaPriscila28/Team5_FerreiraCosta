@@ -1,6 +1,9 @@
-# Sistema de Gerenciamento de Biblioteca
+# Projeto de Sistema de Gerenciamento de Biblioteca
 
 ## Descrição Geral
+
+
+## Descrição do Sistema
 Este projeto envolve o desenvolvimento de um microserviço em C# para gerenciar uma biblioteca. O serviço permitirá operações como adicionar, buscar, atualizar e excluir registros de livros e usuários. Além disso, administrará o empréstimo e a devolução de livros, juntamente com a aplicação de multas por atrasos e restrições para usuários com históricos de atrasos recorrentes.
 
 ## Membros da Equipe
