@@ -47,10 +47,13 @@ Para executar este projeto, você precisará das seguintes ferramentas e tecnolo
 - Um editor de código ou IDE que suporte C# (Recomendado: Visual Studio, Visual Studio Code)
 - Postman ou qualquer cliente API para testar os endpoints da API RESTful
 
-## Configuração do Ambiente de Desenvolvimento
-1. Clone o repositório do projeto para sua máquina local.
-2. Abra o projeto no seu editor de código ou IDE.
-3. Restaure os pacotes NuGet necessários para o projeto.
-4. Configure a string de conexão para o banco de dados no arquivo `appsettings.json`.
-5. Execute as migrações do Entity Framework Core para criar o esquema do banco de dados.
-6. Inicie o projeto e teste os endpoints da API utilizando um cliente API.
+## Como Contribuir
+
+Se você deseja contribuir para o gerenciador de biblioteca, siga estas etapas:
+
+1. Clone o repositório.
+2. Crie um novo branch para suas alterações.
+3. Implemente suas melhorias ou correções.
+4. Envie um pull request para revisão.
+
+Esperamos que este projeto facilite a gestão de bibliotecas e promova o acesso à cultura e ao conhecimento! 📚🌟
