@@ -22,28 +22,15 @@ O gerenciador de biblioteca oferece as seguintes funcionalidades:
 2. **Empréstimos**:
    - Os usuários tem a capacidade de emprestar livros aos usuários, com restrições de livros por usuário ao mesmo tempo.
 
-1. **CRUD (Create, Read, Update, Delete)**:
-   - Os usuários podem adicionar, visualizar, atualizar e excluir informações sobre livros, autores e empréstimos.
-   - O CRUD é essencial para manter o catálogo da biblioteca atualizado.
-   
-
-2. **Empréstimos**:
-   - Os usuários tem a capacidade de emprestar livros aos usuários, com restrições de livros por usuário ao mesmo tempo.
-
-1. **CRUD (Create, Read, Update, Delete)**:
-   - Os usuários podem adicionar, visualizar, atualizar e excluir informações sobre livros, autores e empréstimos.
-   - O CRUD é essencial para manter o catálogo da biblioteca atualizado.
-   
-2. **Empréstimos**:
-   - Os usuários tem a capacidade de emprestar livros aos usuários, com restrições de livros por usuário ao mesmo tempo.   
 3. **Devoluções**:
-  - Funcionalidade para a devolução de livros.
-   
+   - Funcionalidade para a devolução de livros..  
+
 4. **Pesquisa de Livros**:
-  - Capacidade de pesquisar livros por título, autor ou categoria.
-   
+   - Capacidade de pesquisar livros por título, autor ou categoria.
+
 5. **Registro de Atividades**:
-  - O sistema registrará todas as atividades de empréstimo e devolução.
+   - O sistema registrará todas as atividades de empréstimo e devolução.
+   
 
 ## Tecnologias Utilizadas
 - **Linguagem de Programação**: C#
