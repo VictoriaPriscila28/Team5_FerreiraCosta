@@ -34,18 +34,16 @@ Este projeto envolve o desenvolvimento de um microserviço em C# para gerenciar 
 
 ## Tecnologias Utilizadas
 - **Linguagem de Programação**: C#
-- **Framework**: .NET Core
-- **Banco de Dados**: SQL Server
+- **Framework**: .NET Core 6
+- **Banco de Dados**:
 - **ORM**: Entity Framework Core
-- **Autenticação**: JWT (JSON Web Tokens)
 - **Documentação da API**: Swagger
 
 ## Requisitos para Execução
 Para executar este projeto, você precisará das seguintes ferramentas e tecnologias instaladas em seu ambiente de desenvolvimento:
-- .NET Core SDK (versão compatível com o projeto)
-- SQL Server (ou outro banco de dados compatível com Entity Framework Core)
-- Um editor de código ou IDE que suporte C# (Recomendado: Visual Studio, Visual Studio Code)
-- Postman ou qualquer cliente API para testar os endpoints da API RESTful
+- .NET Core 6 SDK
+- SQL
+- Editor de código ou IDE que suporte C# (Recomendado: Visual Studio, Visual Studio Code)
 
 ## Como Contribuir
 
