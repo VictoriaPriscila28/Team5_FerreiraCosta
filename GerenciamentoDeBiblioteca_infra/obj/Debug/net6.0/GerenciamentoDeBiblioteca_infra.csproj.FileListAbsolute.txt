@@ -1,0 +1,12 @@
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\bin\Debug\net6.0\GerenciamentoDeBiblioteca_infra.deps.json
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\bin\Debug\net6.0\GerenciamentoDeBiblioteca_infra.dll
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\bin\Debug\net6.0\GerenciamentoDeBiblioteca_infra.pdb
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\obj\Debug\net6.0\GerenciamentoDeBiblioteca_infra.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\obj\Debug\net6.0\GerenciamentoDeBiblioteca_infra.AssemblyInfoInputs.cache
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\obj\Debug\net6.0\GerenciamentoDeBiblioteca_infra.AssemblyInfo.cs
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\obj\Debug\net6.0\GerenciamentoDeBiblioteca_infra.csproj.CoreCompileInputs.cache
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\obj\Debug\net6.0\GerenciamentoDeBiblioteca_infra.sourcelink.json
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\obj\Debug\net6.0\GerenciamentoDeBiblioteca_infra.dll
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\obj\Debug\net6.0\refint\GerenciamentoDeBiblioteca_infra.dll
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\obj\Debug\net6.0\GerenciamentoDeBiblioteca_infra.pdb
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_infra\obj\Debug\net6.0\ref\GerenciamentoDeBiblioteca_infra.dll
