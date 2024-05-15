@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GerenciamentoDeBiblioteca.Data.Map
+namespace GerenciamentoDeBiblioteca_infra.Data.Map
 {
     public class UsuarioMap : IEntityTypeConfiguration<UsuarioModel>
     {
