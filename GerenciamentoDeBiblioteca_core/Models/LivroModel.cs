@@ -1,4 +1,10 @@
 ﻿using GerenciamentoDeBiblioteca.Enums;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace GerenciamentoDeBiblioteca.Models
 {
@@ -6,7 +12,7 @@ namespace GerenciamentoDeBiblioteca.Models
     {
         public int Id { get; set; }
         public string? Titulo { get; set; }
-        public string? Autor { get; set;}
+        public string? Autor { get; set; }
         public string? Categoria { get; set; }
         public StatusLivro Status { get; set; }
         public int? UsuarioId { get; set; }
