@@ -1,5 +1,6 @@
-﻿using GerenciamentoDeBiblioteca.Data.Map;
+﻿
 using GerenciamentoDeBiblioteca.Models;
+using GerenciamentoDeBiblioteca_infra.Data.Map;
 using Microsoft.EntityFrameworkCore;
 
 namespace GerenciamentoDeBiblioteca.Data

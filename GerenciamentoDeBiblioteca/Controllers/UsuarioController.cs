@@ -1,21 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
-using GerenciamentoDeBiblioteca.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using GerenciamentoDeBiblioteca.Models;
 using GerenciamentoDeBiblioteca.Repositorios.Interface;
+using Microsoft.AspNetCore.Mvc;
 
 
-namespace GerenciamentoDeBiblioteca.Controllers
+namespace SistemaDeTarefas.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
+
         public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
         {
             _usuarioRepositorio = usuarioRepositorio;
-            
         }
+
         [HttpGet]
         public async Task<ActionResult<List<UsuarioModel>>> BuscarTodosUsuarios()
         {
@@ -23,7 +23,7 @@ namespace GerenciamentoDeBiblioteca.Controllers
             return Ok(usuarios);
         }
 
-        [HttpGet ("{id}") ]
+        [HttpGet("{id}")]
         public async Task<ActionResult<UsuarioModel>> BuscarPorId(int id)
         {
             UsuarioModel usuario = await _usuarioRepositorio.BuscarPorId(id);
@@ -35,34 +35,23 @@ namespace GerenciamentoDeBiblioteca.Controllers
         {
             UsuarioModel usuario = await _usuarioRepositorio.Adicionar(usuarioModel);
             return Ok(usuario);
-
         }
 
-        [HttpPut ("{id}")]
+        [HttpPut("{id}")]
         public async Task<ActionResult<UsuarioModel>> Atualizar([FromBody] UsuarioModel usuarioModel, int id)
         {
             usuarioModel.Id = id;
             UsuarioModel usuario = await _usuarioRepositorio.Atualizar(usuarioModel, id);
             return Ok(usuario);
-
         }
 
-        [HttpDelete]
-        public async Task<ActionResult<UsuarioModel>> Apagar([FromBody] UsuarioModel usuarioModel, int id)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<UsuarioModel>> Apagar(int id)
         {
-           
             bool apagado = await _usuarioRepositorio.Apagar(id);
             return Ok(apagado);
-
         }
-
-
     }
-        
-        
-
-          
-    
 }
-    
+
 

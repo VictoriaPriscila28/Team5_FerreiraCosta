@@ -1,6 +1,7 @@
 C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_core\bin\Debug\net6.0\GerenciamentoDeBiblioteca_core.deps.json
 C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_core\bin\Debug\net6.0\GerenciamentoDeBiblioteca_core.dll
 C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_core\bin\Debug\net6.0\GerenciamentoDeBiblioteca_core.pdb
+C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_core\obj\Debug\net6.0\GerenciamentoDeBiblioteca_core.csproj.AssemblyReference.cache
 C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_core\obj\Debug\net6.0\GerenciamentoDeBiblioteca_core.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_core\obj\Debug\net6.0\GerenciamentoDeBiblioteca_core.AssemblyInfoInputs.cache
 C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca_core\obj\Debug\net6.0\GerenciamentoDeBiblioteca_core.AssemblyInfo.cs
