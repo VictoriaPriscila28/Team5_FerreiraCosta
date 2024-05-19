@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GerenciamentoDeBiblioteca_core.Entidades
+namespace GerenciamentoDeBiblioteca_core.Models
 {
-    public abstract class EntidadeBaseModel
+    internal class AtividadeModel
     {
-        public int Id { get; set; }
     }
 }

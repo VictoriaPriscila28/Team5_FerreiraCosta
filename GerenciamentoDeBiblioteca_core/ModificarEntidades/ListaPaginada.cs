@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GerenciamentoDeBiblioteca_core.Entidades
+namespace GerenciamentoDeBiblioteca_core.ModificarEntidades
 {
-    public abstract class EntidadeBaseModel
+    internal class ListaPaginada
     {
-        public int Id { get; set; }
     }
 }

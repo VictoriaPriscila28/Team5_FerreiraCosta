@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "H3pdMe9sDrIma1/GGODYobyjFb9/An/+PVP94NGQsvgtM3mqEovsh4F/tUvJ4uegssXouFj5MdZynObJ5hNjGA==",
+  "dgSpecHash": "UvSspDurOIorkAltx+LY9twxeiyb/oeJyoVckg2avHLI56cdo4g9zMzcUdYYg1lLAudaeeGo+sDOEs0tFIIbcg==",
   "success": true,
   "projectFilePath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.csproj",
   "expectedPackageFiles": [
@@ -38,6 +38,7 @@
     "C:\\Users\\victoria\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\victoria\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\victoria\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\victoria\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\victoria\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\victoria\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\victoria\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
