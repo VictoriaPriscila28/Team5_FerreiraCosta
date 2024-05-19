@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GerenciamentoDeBiblioteca_infra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71ad791b18139828ac3d93334afdbdf36fbd4d4d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+917efb4a082d06ed88a9c9f343e51b7d78716d58")]
 [assembly: System.Reflection.AssemblyProductAttribute("GerenciamentoDeBiblioteca_infra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GerenciamentoDeBiblioteca_infra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
