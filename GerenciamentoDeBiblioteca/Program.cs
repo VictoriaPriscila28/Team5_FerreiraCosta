@@ -4,6 +4,11 @@ using GerenciamentoDeBiblioteca.Repositorios.Interface;
 using GerenciamentoDeBiblioteca_core.Interface;
 using Microsoft.EntityFrameworkCore;
 
+using GerenciamentoDeBiblioteca.Models;
+using GerenciamentoDeBiblioteca.Validacao;
+using GerenciamentoDeBiblioteca_infra.Profile;
+using AutoMapper;
+
 namespace GerenciamentoDeBiblioteca
 {
     public class Program
@@ -19,6 +24,7 @@ namespace GerenciamentoDeBiblioteca
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+
             builder.Services.AddEntityFrameworkSqlServer()
                 .AddDbContext<SistemaGerenciamentoDBContext>(
 
@@ -30,6 +36,8 @@ namespace GerenciamentoDeBiblioteca
             builder.Services.AddScoped<ILivroRepositorio, LivroRepositorio>();
             builder.Services.AddScoped<IEmprestimoRepositorio, IEmprestimoRepositorio>(); // Adiciona o repositório de empréstimo
             builder.Services.AddScoped<IServicoEmprestimo, IServicoEmprestimo>();
+            // Configurar o AutoMapper
+            builder.Services.AddAutoMapper(typeof(AutomapperProfile));
 
             var app = builder.Build();
 
@@ -40,6 +48,7 @@ namespace GerenciamentoDeBiblioteca
                 app.UseSwaggerUI();
             }
 
+          
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

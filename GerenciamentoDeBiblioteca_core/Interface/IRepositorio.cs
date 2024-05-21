@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GerenciamentoDeBiblioteca.Models;
-using GerenciamentoDeBiblioteca_core.Entidades;
+using GerenciamentoDeBiblioteca_core.Models;
 
 namespace GerenciamentoDeBiblioteca_core.Interface
 {

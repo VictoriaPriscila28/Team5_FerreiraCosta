@@ -1,5 +1,5 @@
 ﻿using GerenciamentoDeBiblioteca.Core.Models;
-using GerenciamentoDeBiblioteca_core.Entidades;
+using GerenciamentoDeBiblioteca_core.Interface;
 
 using System;
 using System.Collections.Generic;

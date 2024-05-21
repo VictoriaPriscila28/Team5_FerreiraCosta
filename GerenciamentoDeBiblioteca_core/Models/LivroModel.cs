@@ -1,4 +1,5 @@
-﻿using GerenciamentoDeBiblioteca.Enums;
+﻿using GerenciamentoDeBiblioteca.Core.Models;
+using GerenciamentoDeBiblioteca.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,8 @@ namespace GerenciamentoDeBiblioteca.Models
         public StatusLivro Status { get; set; }
         public int? UsuarioId { get; set; }
         public virtual UsuarioModel? Usuario { get; set; }
+
+        // Adicionar a propriedade de navegação para Emprestimos
+        public ICollection<Emprestimos> Emprestimos { get; set; }
     }
 }

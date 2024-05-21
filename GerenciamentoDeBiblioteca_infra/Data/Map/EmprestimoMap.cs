@@ -14,7 +14,22 @@ namespace GerenciamentoDeBiblioteca_infra.Data.Map
         public void Configure(EntityTypeBuilder<Emprestimos> builder)
         {
             builder.HasKey(e => e.Id);
-            // Outras configurações de mapeamento
+
+            builder.HasOne(e => e.Usuario)
+                   .WithMany(u => u.Emprestimos)
+                   .HasForeignKey(e => e.UsuarioId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(e => e.Livro)
+                   .WithMany(l => l.Emprestimos)
+                   .HasForeignKey(e => e.LivroId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Property(e => e.DataEmprestimo)
+                   .IsRequired();
+
+            builder.Property(e => e.DataDevolucao)
+                   .IsRequired(false);
         }
     }
 }

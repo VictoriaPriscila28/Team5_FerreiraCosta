@@ -4,9 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GerenciamentoDeBiblioteca_core.Entidades
+namespace GerenciamentoDeBiblioteca_core.Models;
+
+    public partial class AutorModel : EntidadeBaseModel
 {
-    internal class Autor
-    {
-    }
+    public string NomeAutor { get; set; }
+    public string NacionalidadeAutor { get; set; }
 }
+
+
+
+
+
