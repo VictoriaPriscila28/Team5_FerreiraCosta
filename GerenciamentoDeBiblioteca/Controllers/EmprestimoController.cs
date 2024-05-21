@@ -20,6 +20,9 @@ namespace GerenciamentoDeBiblioteca.Controllers
         private readonly IServicoEmprestimo _servicoEmprestimo;
         private readonly IMapper _mapper;
         private readonly IServicoUri _servicoUri;
+        private readonly object _servicoEmprestimos;
+        private object emprestimo;
+
         public EmprestimoController(IServicoEmprestimo servicoEmprestimo, IMapper mapper, IServicoUri servicoUri)
         {
             _servicoEmprestimo = servicoEmprestimo;
@@ -38,7 +41,7 @@ namespace GerenciamentoDeBiblioteca.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(RespostasApi<IEnumerable<EmprestimoDto>>))]
         public IActionResult GetEmprestimos([FromQuery] EmprestimoConsultaFiltro filtro)
         {
-            var emprestimos = _servicoEmprestimo.GetEmprestimos(filtro);
+            var emprestimos = _servicoEmprestimos.GetEmprestimos(filtro);
             var emprestimosDtos = _mapper.Map<IEnumerable<EmprestimoDto>>(emprestimos);
 
             var Metadado = new Metadado
@@ -70,7 +73,7 @@ namespace GerenciamentoDeBiblioteca.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmprestimos(int id)
         {
-            var prestado = await _servicoEmprestimo.GetEmprestimos(id);
+            var prestado = await _servicoEmprestimos.GetEmprestimos(id);
             var EmprestimoDto = _mapper.Map<EmprestimoDto>(emprestimo);
             var resposta = new RespostasApi<EmprestimoDto>(EmprestimoDto);
             return Ok(resposta);
@@ -83,11 +86,11 @@ namespace GerenciamentoDeBiblioteca.Controllers
         /// <param name="EmprestimoDto"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Prestado(EmprestimoDto EmprestimoDto)
+        public async Task<IActionResult> Emprestimo(EmprestimoDto EmprestimoDto)
         {
-            var prestado = _mapper.Map<Prestados>(EmprestimoDto);
+            var prestado = _mapper.Map<Emprestimo>(EmprestimoDto);
 
-            await _servicoEmprestimo.InsertarPrestado(prestado);
+            await _servicoEmprestimo.InserirEmprestimo(emprestimo);
 
             EmprestimoDto = _mapper.Map<EmprestimoDto>(prestado);
             var respuesta = new RespostasApi<EmprestimoDto>(EmprestimoDto);
@@ -102,14 +105,14 @@ namespace GerenciamentoDeBiblioteca.Controllers
         /// <param name="EmprestimoDto"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<IActionResult> PrestadoPut(int id, EmprestimoDto EmprestimoDto)
+        public async Task<IActionResult> EmprestimosPut(int id, EmprestimoDto EmprestimoDto)
         {
-            var prestado = _mapper.Map<Prestados>(EmprestimoDto);
+            var prestado = _mapper.Map<Emprestimo>(EmprestimoDto);
             prestado.Id = id;
 
-            var resultado = await _servicoEmprestimo.ActualizarPrestado(prestado);
-            var respuesta = new RespostasApi<bool>(resultado);
-            return Ok(respuesta);
+            var resultado = await _servicoEmprestimo.AtualizarEmprestimo(emprestimo);
+            var resposta = new RespostasApi<bool>(resultado);
+            return Ok(resposta);
 
         }
 

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "UvSspDurOIorkAltx+LY9twxeiyb/oeJyoVckg2avHLI56cdo4g9zMzcUdYYg1lLAudaeeGo+sDOEs0tFIIbcg==",
+  "dgSpecHash": "QqGsD6GYrYadMfAagpjPjdejz7+C3hV7K/DgCHpjJKG7Bg2pmsKO5VN4fadx/7UqphR7h9IbNyy2ZKthwK55JQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\victoria\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\victoria\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.0.0\\automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512",
+    "C:\\Users\\victoria\\.nuget\\packages\\fluentvalidation\\11.9.1\\fluentvalidation.11.9.1.nupkg.sha512",
     "C:\\Users\\victoria\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\victoria\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "C:\\Users\\victoria\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

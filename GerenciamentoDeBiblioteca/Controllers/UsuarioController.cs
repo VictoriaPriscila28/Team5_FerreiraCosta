@@ -1,7 +1,6 @@
 ﻿using GerenciamentoDeBiblioteca.Models;
 using GerenciamentoDeBiblioteca.Repositorios.Interface;
 using GerenciamentoDeBiblioteca_core.DTOs;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
@@ -14,6 +13,7 @@ using GerenciamentoDeBiblioteca_core.Interface;
 using GerenciamentoDeBiblioteca_core.ModificarEntidades;
 using GerenciamentoDeBiblioteca_core.ConsultaFiltro;
 using Newtonsoft.Json;
+using FluentValidation;
 
 
 namespace SistemaDeTarefas.Controllers
@@ -22,7 +22,9 @@ namespace SistemaDeTarefas.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
+
     {
+        private readonly IValidator<UsuarioModel> _usuarioValidacao;
         private readonly IMapper? _mapper;
         private readonly IServicoUri _servicoUri;
         private readonly IServicoUsuario _servicoUsuario;
@@ -68,72 +70,72 @@ namespace SistemaDeTarefas.Controllers
 
             Response.Headers.Add("X-Paginacao", JsonConvert.SerializeObject(metadado));
 
-            return Ok(respuesta);
+            return Ok(resposta);
 
         }
 
         /// <summary>
-        /// Retorna los estudiantes por el ID
+        /// Retorna todos os usuarios por  ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetEstudiante(int id)
+        public async Task<IActionResult> GetUsuario(int id)
         {
-            var estudiante = await _servicioEstudiante.GetEstudiante(id);
-            var estudianteDto = _mapper.Map<EstudianteDto>(estudiante);
-            var respuesta = new ApiRespuesta<EstudianteDto>(estudianteDto);
-            return Ok(respuesta);
+            var usuario = await _servicoUsuario.GetUsuario(id);
+            var usuarioDto = _mapper.Map<UsuarioDto>(usuario);
+            var resposta = new RespostasApi<UsuarioDto>(usuarioDto);
+            return Ok(resposta);
 
         }
 
         /// <summary>
-        /// Inserta estudiante
+        /// Insere usuario
         /// </summary>
-        /// <param name="estudianteDto"></param>
+        /// <param name="usuarioDto"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Estudiante(EstudianteDto estudianteDto)
+        public async Task<IActionResult> Usuario(UsuarioDto usuarioDto)
         {
-            var estudiante = _mapper.Map<Estudiantes>(estudianteDto);
+            var usuario = _mapper.Map<UsuarioModel>(usuarioDto);
 
-            await _servicioEstudiante.InsertarEstudiante(estudiante);
+            await _servicoUsuario.InserirUsuario(usuario);
 
-            estudianteDto = _mapper.Map<EstudianteDto>(estudiante);
-            var respuesta = new ApiRespuesta<EstudianteDto>(estudianteDto);
-            return Ok(respuesta);
+            usuarioDto = _mapper.Map<UsuarioDto>(usuario);
+            var resposta = new RespostasApi<UsuarioDto>(usuarioDto);
+            return Ok(resposta);
 
         }
 
         /// <summary>
-        /// Actualiza libros
+        /// Atualiza livros
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="estudianteDto"></param>
+        /// <param name="usuarioDto"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<IActionResult> EstudiantePut(int id, EstudianteDto estudianteDto)
+        public async Task<IActionResult> UsuarioPut(int id, UsuarioDto usuarioDto)
         {
-            var estudiante = _mapper.Map<Estudiantes>(estudianteDto);
-            estudiante.Id = id;
+            var usuario = _mapper.Map<UsuarioModel>(usuarioDto);
+            usuario.Id = id;
 
-            var resultado = await _servicioEstudiante.ActualizarEstudiante(estudiante);
-            var respuesta = new ApiRespuesta<bool>(resultado);
-            return Ok(respuesta);
+            var resultado = await _servicoUsuario.AtualizarUsuario(usuario);
+            var resposta = new RespostasApi<bool>(resultado);
+            return Ok(resposta);
 
         }
 
         /// <summary>
-        /// Elimina estudiante
+        /// Deletar usuario
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> EstudianteDelete(int id)
+        public async Task<IActionResult> ApagarUsuario(int id)
         {
-            var resultado = await _servicioEstudiante.EliminarEstudiante(id);
-            var respuesta = new ApiRespuesta<bool>(resultado);
-            return Ok(respuesta);
+            var resultado = await _servicoUsuario.ApagarUsuario(id);
+            var resposta = new RespostasApi<bool>(resultado);
+            return Ok(resposta);
 
         }
     }

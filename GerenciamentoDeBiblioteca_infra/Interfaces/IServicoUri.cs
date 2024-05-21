@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GerenciamentoDeBiblioteca_core.ConsultaFiltro;
+using System;
 
 namespace GerenciamentoDeBiblioteca_infra.Interfaces
 {
-    internal class IServicoUri
+    public interface IServicoUri
     {
+        Uri ObterPaginacaoEmprestimoUri(EmprestimoConsultaFiltro filtro, string acaoUri);
+
+        Uri ObterPaginacaoEstudanteUri(UsuarioConsultaFiltro filtro, string acaoUri);
+
+        Uri ObterPaginacaoLivroUri(LivroConsultaFiltro filtro, string acaoUri);
     }
+
 }

@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace GerenciamentoDeBiblioteca_core.DTOs
 {
-    internal class UsuarioDto
+    public class UsuarioDto
     {
+        public int Id { get; set; }
+        public string Cpf { get; set; }
+        public string NomeUsuario { get; set; }
+        public int? IdadeUsuario { get; set; }
+        
     }
 }

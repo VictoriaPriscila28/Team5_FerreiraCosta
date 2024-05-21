@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace GerenciamentoDeBiblioteca_core.DTOs
 {
-    internal class LivroDto
+    public class LivroDto
     {
+        public int Id { get; set; }
+        public string TituloLivro { get; set; }
+        public string EditoraLivro { get; set; }
+        public string CategoriaLivro { get; set; }
     }
 }
+

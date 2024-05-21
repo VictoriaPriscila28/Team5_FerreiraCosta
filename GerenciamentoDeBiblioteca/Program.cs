@@ -1,6 +1,7 @@
 using GerenciamentoDeBiblioteca.Data;
 using GerenciamentoDeBiblioteca.Repositorios;
 using GerenciamentoDeBiblioteca.Repositorios.Interface;
+using GerenciamentoDeBiblioteca_core.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace GerenciamentoDeBiblioteca
@@ -27,6 +28,8 @@ namespace GerenciamentoDeBiblioteca
 
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             builder.Services.AddScoped<ILivroRepositorio, LivroRepositorio>();
+            builder.Services.AddScoped<IEmprestimoRepositorio, IEmprestimoRepositorio>(); // Adiciona o repositório de empréstimo
+            builder.Services.AddScoped<IServicoEmprestimo, IServicoEmprestimo>();
 
             var app = builder.Build();
 

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace GerenciamentoDeBiblioteca_core.ConsultaFiltro
 {
-    internal class UsuarioConsultaFiltro
+    public class UsuarioConsultaFiltro
     {
+        public int TamanhoPagina { get; set; }
+
+        public int NumeroPagina { get; set; }
     }
 }

@@ -11,3 +11,6 @@ namespace GerenciamentoDeBiblioteca_core.Entidades
         public int Id { get; set; }
     }
 }
+
+
+

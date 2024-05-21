@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace GerenciamentoDeBiblioteca_core.Enums
 {
-    internal class StatusEmprestimo
+    public enum StatusEmprestimo
     {
+        [Description("Ativo")]
+        Ativo = 1,
+        [Description("Negado")]
+        Negado = 2,
+        [Description("Devolvido")]
+        Devolvido = 3,
     }
 }
