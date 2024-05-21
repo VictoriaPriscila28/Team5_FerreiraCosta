@@ -3,6 +3,8 @@ using GerenciamentoDeBiblioteca.Models;
 using Microsoft.AspNetCore.Mvc;
 using GerenciamentoDeBiblioteca.Repositorios.Interface;
 using Microsoft.AspNetCore.Authorization;
+using GerenciamentoDeBiblioteca_core.Interface;
+using GerenciamentoDeBiblioteca_core.Servicos;
 
 
 namespace GerenciamentoDeBiblioteca.Controllers
@@ -16,7 +18,28 @@ namespace GerenciamentoDeBiblioteca.Controllers
         public LivroController(ILivroRepositorio livroRepositorio)
         {
             _livroRepositorio = livroRepositorio;
-            
+            _servicoLivro = ServicoLivro;
+
+        }
+        [HttpGet("pesquisar/titulo")]
+        public async Task<ActionResult<IEnumerable<LivroModel>>> PesquisarPorTitulo(string titulo)
+        {
+            var livros = await _livroServico.PesquisarPorTitulo(titulo);
+            return Ok(livros);
+        }
+
+        [HttpGet("pesquisar/autor")]
+        public async Task<ActionResult<IEnumerable<LivroModel>>> PesquisarPorAutor(string autor)
+        {
+            var livros = await _livroServico.PesquisarPorAutor(autor);
+            return Ok(livros);
+        }
+
+        [HttpGet("pesquisar/categoria")]
+        public async Task<ActionResult<IEnumerable<LivroModel>>> PesquisarPorCategoria(string categoria)
+        {
+            var livros = await _livroServico.PesquisarPorCategoria(categoria);
+            return Ok(livros);
         }
         [HttpGet]
         public async Task<ActionResult<List<LivroModel>>> BuscarTodosLivros()

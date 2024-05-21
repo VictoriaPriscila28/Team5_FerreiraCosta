@@ -9,6 +9,7 @@ namespace GerenciamentoDeBiblioteca.Repositorios.Interface
         Task<LivroModel> Adicionar(LivroModel livro);
         Task<LivroModel> Atualizar(LivroModel livro, int id);
         Task<bool>Apagar(int id);
+       
 
 
     }
