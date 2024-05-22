@@ -932,39 +932,6 @@
             "rid": "win"
           }
         }
-      },
-      "GerenciamentoDeBiblioteca_core/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "AutoMapper": "13.0.1",
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
-          "GerenciamentoDeBiblioteca_infra": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "6.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0"
-        },
-        "compile": {
-          "bin/placeholder/GerenciamentoDeBiblioteca_core.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/GerenciamentoDeBiblioteca_core.dll": {}
-        }
-      },
-      "GerenciamentoDeBiblioteca_infra/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "AutoMapper": "13.0.1",
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
-          "GerenciamentoDeBiblioteca_core": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "6.0.0"
-        },
-        "compile": {
-          "bin/placeholder/GerenciamentoDeBiblioteca_infra.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/GerenciamentoDeBiblioteca_infra.dll": {}
-        }
       }
     }
   },
@@ -2540,16 +2507,6 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "GerenciamentoDeBiblioteca_core/1.0.0": {
-      "type": "project",
-      "path": "../GerenciamentoDeBiblioteca_core/GerenciamentoDeBiblioteca_core.csproj",
-      "msbuildProject": "../GerenciamentoDeBiblioteca_core/GerenciamentoDeBiblioteca_core.csproj"
-    },
-    "GerenciamentoDeBiblioteca_infra/1.0.0": {
-      "type": "project",
-      "path": "../GerenciamentoDeBiblioteca_infra/GerenciamentoDeBiblioteca_infra.csproj",
-      "msbuildProject": "../GerenciamentoDeBiblioteca_infra/GerenciamentoDeBiblioteca_infra.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2557,8 +2514,6 @@
       "AutoMapper >= 13.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 6.0.0",
       "FluentValidation >= 11.9.1",
-      "GerenciamentoDeBiblioteca_core >= 1.0.0",
-      "GerenciamentoDeBiblioteca_infra >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.0",
@@ -2576,9 +2531,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.csproj",
-      "projectName": "GerenciamentoDeBiblioteca",
-      "projectPath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.csproj",
+      "projectUniqueName": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.API.csproj",
+      "projectName": "GerenciamentoDeBiblioteca.API",
+      "projectPath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.API.csproj",
       "packagesPath": "C:\\Users\\victoria\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca\\obj\\",
       "projectStyle": "PackageReference",
@@ -2601,14 +2556,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca_core\\GerenciamentoDeBiblioteca_core.csproj": {
-              "projectPath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca_core\\GerenciamentoDeBiblioteca_core.csproj"
-            },
-            "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca_infra\\GerenciamentoDeBiblioteca_infra.csproj": {
-              "projectPath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca_infra\\GerenciamentoDeBiblioteca_infra.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

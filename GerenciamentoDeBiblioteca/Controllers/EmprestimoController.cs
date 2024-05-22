@@ -32,7 +32,7 @@ namespace GerenciamentoDeBiblioteca.Controllers
 
 
         /// <summary>
-        /// Retorna todos los emprestimos
+        /// Retorna todos os emprestimos
         /// </summary>
         /// <param name="filtro">Filtros para aplicar</param>
         /// <returns></returns>
@@ -66,14 +66,14 @@ namespace GerenciamentoDeBiblioteca.Controllers
         }
 
         /// <summary>
-        /// Retorna los prestados por el ID
+        /// Retorna os emprestimos por ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmprestimos(int id)
         {
-            var prestado = await _servicoEmprestimos.GetEmprestimos(id);
+            var emprestimo = await _servicoEmprestimos.GetEmprestimos(id);
             var EmprestimoDto = _mapper.Map<EmprestimoDto>(emprestimo);
             var resposta = new RespostasApi<EmprestimoDto>(EmprestimoDto);
             return Ok(resposta);
@@ -81,7 +81,7 @@ namespace GerenciamentoDeBiblioteca.Controllers
         }
 
         /// <summary>
-        /// Inserta prestados
+        /// Insere emprestimos
         /// </summary>
         /// <param name="EmprestimoDto"></param>
         /// <returns></returns>
@@ -93,13 +93,13 @@ namespace GerenciamentoDeBiblioteca.Controllers
             await _servicoEmprestimo.InserirEmprestimo(emprestimo);
 
             EmprestimoDto = _mapper.Map<EmprestimoDto>(prestado);
-            var respuesta = new RespostasApi<EmprestimoDto>(EmprestimoDto);
-            return Ok(respuesta);
+            var resposta = new RespostasApi<EmprestimoDto>(EmprestimoDto);
+            return Ok(resposta);
 
         }
 
         /// <summary>
-        /// Actualiza prestados
+        /// Atualiza emprestimos
         /// </summary>
         /// <param name="id"></param>
         /// <param name="EmprestimoDto"></param>

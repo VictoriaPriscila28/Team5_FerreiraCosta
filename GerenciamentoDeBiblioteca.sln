@@ -5,9 +5,9 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciamentoDeBiblioteca", "GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca.csproj", "{C1DBF47B-1886-4744-8634-742764F28E77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciamentoDeBiblioteca_infra", "GerenciamentoDeBiblioteca_infra\GerenciamentoDeBiblioteca_infra.csproj", "{A6DD12FA-EF9B-44EB-BF82-53290D94F998}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciamentoDeBiblioteca_infra", "GerenciamentoDeBiblioteca_infra\GerenciamentoDeBiblioteca_infra.csproj", "{A6DD12FA-EF9B-44EB-BF82-53290D94F998}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciamentoDeBiblioteca_core", "GerenciamentoDeBiblioteca_core\GerenciamentoDeBiblioteca_core.csproj", "{3870D2EB-8EE4-475A-B9E8-A2BDC0D6860F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciamentoDeBiblioteca_core", "GerenciamentoDeBiblioteca_core\GerenciamentoDeBiblioteca_core.csproj", "{3870D2EB-8EE4-475A-B9E8-A2BDC0D6860F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

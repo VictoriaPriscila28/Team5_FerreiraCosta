@@ -774,7 +774,6 @@
         "dependencies": {
           "AutoMapper": "13.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
-          "GerenciamentoDeBiblioteca_infra": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0"
         },
@@ -2077,16 +2076,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1108",
-      "level": "Error",
-      "message": "Cycle detected. \r\n  GerenciamentoDeBiblioteca_infra -> GerenciamentoDeBiblioteca_core -> GerenciamentoDeBiblioteca_infra.",
-      "libraryId": "GerenciamentoDeBiblioteca_infra",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }

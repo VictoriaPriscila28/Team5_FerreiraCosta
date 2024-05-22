@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "o42vME74v9Tx3fDmD4F8BYKLooER3JIduyCzMff6iaM1GuQk9gB70Y0RXlPTU32lbXt/3wX/yLGJ7AADVBBa+A==",
-  "success": false,
+  "dgSpecHash": "dMvBIMa7plPPrkmkF4XYPqRdpYCB7vOAsS9kTVrM4YkN2zCDG/HqYgx5o5MFrirF2KKBoAbJLRu1UOo4JMV3qw==",
+  "success": true,
   "projectFilePath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca_infra\\GerenciamentoDeBiblioteca_infra.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\victoria\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
@@ -47,15 +47,5 @@
     "C:\\Users\\victoria\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Users\\victoria\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1108",
-      "level": "Error",
-      "message": "Cycle detected. \r\n  GerenciamentoDeBiblioteca_infra -> GerenciamentoDeBiblioteca_core -> GerenciamentoDeBiblioteca_infra.",
-      "libraryId": "GerenciamentoDeBiblioteca_infra",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

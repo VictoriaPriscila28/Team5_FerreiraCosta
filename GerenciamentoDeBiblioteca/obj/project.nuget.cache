@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QqGsD6GYrYadMfAagpjPjdejz7+C3hV7K/DgCHpjJKG7Bg2pmsKO5VN4fadx/7UqphR7h9IbNyy2ZKthwK55JQ==",
+  "dgSpecHash": "QAgXIkDmXhNNPWIMio8cYisLR2I6xwFr7ALTDDRl7qOjTCI/9aAnsdmZGGpvJ2Z8X1mCO8vA1NN1ZL3ei0AyRg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.csproj",
+  "projectFilePath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\victoria\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\victoria\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.0.0\\automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512",
