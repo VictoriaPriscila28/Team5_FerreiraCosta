@@ -1,13 +1,7 @@
-using GerenciamentoDeBiblioteca.Data;
-using GerenciamentoDeBiblioteca.Repositorios;
-using GerenciamentoDeBiblioteca.Repositorios.Interface;
-using GerenciamentoDeBiblioteca_core.Interface;
+
 using Microsoft.EntityFrameworkCore;
 
-using GerenciamentoDeBiblioteca.Models;
-using GerenciamentoDeBiblioteca.Validacao;
-using GerenciamentoDeBiblioteca_infra.Profile;
-using AutoMapper;
+
 
 namespace GerenciamentoDeBiblioteca
 {
@@ -25,19 +19,9 @@ namespace GerenciamentoDeBiblioteca
             builder.Services.AddSwaggerGen();
 
 
-            builder.Services.AddEntityFrameworkSqlServer()
-                .AddDbContext<SistemaGerenciamentoDBContext>(
 
-                    options => options.UseSqlServer(builder.Configuration.GetConnectionString("Database"))
-                
-                );
-
-            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
-            builder.Services.AddScoped<ILivroRepositorio, LivroRepositorio>();
-            builder.Services.AddScoped<IEmprestimoRepositorio, IEmprestimoRepositorio>(); // Adiciona o repositório de empréstimo
-            builder.Services.AddScoped<IServicoEmprestimo, IServicoEmprestimo>();
-            // Configurar o AutoMapper
-            builder.Services.AddAutoMapper(typeof(AutomapperProfile));
+           
+           
 
             var app = builder.Build();
 

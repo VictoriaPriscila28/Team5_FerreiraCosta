@@ -28,8 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GerenciamentoDeBiblioteca_core\GerenciamentoDeBiblioteca_core.csproj" />
-    <ProjectReference Include="..\GerenciamentoDeBiblioteca_infra\GerenciamentoDeBiblioteca_infra.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
