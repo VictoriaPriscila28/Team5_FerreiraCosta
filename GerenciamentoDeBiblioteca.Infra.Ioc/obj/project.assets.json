@@ -1,11 +1,68 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "GerenciamentoDeBiblioteca.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "GerenciamentoDeBiblioteca.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GerenciamentoDeBiblioteca.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GerenciamentoDeBiblioteca.Application.dll": {}
+        }
+      },
+      "GerenciamentoDeBiblioteca.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/GerenciamentoDeBiblioteca.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GerenciamentoDeBiblioteca.Domain.dll": {}
+        }
+      },
+      "GerenciamentoDeBiblioteca.Infra.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "GerenciamentoDeBiblioteca.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GerenciamentoDeBiblioteca.Infra.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GerenciamentoDeBiblioteca.Infra.Data.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "GerenciamentoDeBiblioteca.Application/1.0.0": {
+      "type": "project",
+      "path": "../GerenciamentoDeBiblioteca.Application/GerenciamentoDeBiblioteca.Application.csproj",
+      "msbuildProject": "../GerenciamentoDeBiblioteca.Application/GerenciamentoDeBiblioteca.Application.csproj"
+    },
+    "GerenciamentoDeBiblioteca.Domain/1.0.0": {
+      "type": "project",
+      "path": "../GerenciamentoDeBiblioteca.Domain/GerenciamentoDeBiblioteca.Domain.csproj",
+      "msbuildProject": "../GerenciamentoDeBiblioteca.Domain/GerenciamentoDeBiblioteca.Domain.csproj"
+    },
+    "GerenciamentoDeBiblioteca.Infra.Data/1.0.0": {
+      "type": "project",
+      "path": "../GerenciamentoDeBiblioteca.Infra.Data/GerenciamentoDeBiblioteca.Infra.Data.csproj",
+      "msbuildProject": "../GerenciamentoDeBiblioteca.Infra.Data/GerenciamentoDeBiblioteca.Infra.Data.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "GerenciamentoDeBiblioteca.Application >= 1.0.0",
+      "GerenciamentoDeBiblioteca.Domain >= 1.0.0",
+      "GerenciamentoDeBiblioteca.Infra.Data >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\victoria\\.nuget\\packages\\": {},
@@ -39,7 +96,17 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.Application\\GerenciamentoDeBiblioteca.Application.csproj": {
+              "projectPath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.Application\\GerenciamentoDeBiblioteca.Application.csproj"
+            },
+            "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.Domain\\GerenciamentoDeBiblioteca.Domain.csproj": {
+              "projectPath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.Domain\\GerenciamentoDeBiblioteca.Domain.csproj"
+            },
+            "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.Infra.Data\\GerenciamentoDeBiblioteca.Infra.Data.csproj": {
+              "projectPath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.Infra.Data\\GerenciamentoDeBiblioteca.Infra.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "GerenciamentoDeBiblioteca.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/GerenciamentoDeBiblioteca.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GerenciamentoDeBiblioteca.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "GerenciamentoDeBiblioteca.Domain/1.0.0": {
+      "type": "project",
+      "path": "../GerenciamentoDeBiblioteca.Domain/GerenciamentoDeBiblioteca.Domain.csproj",
+      "msbuildProject": "../GerenciamentoDeBiblioteca.Domain/GerenciamentoDeBiblioteca.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "GerenciamentoDeBiblioteca.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\victoria\\.nuget\\packages\\": {},
@@ -39,7 +58,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.Domain\\GerenciamentoDeBiblioteca.Domain.csproj": {
+              "projectPath": "C:\\Users\\victoria\\source\\repos\\GerenciamentoDeBiblioteca\\GerenciamentoDeBiblioteca.Domain\\GerenciamentoDeBiblioteca.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
