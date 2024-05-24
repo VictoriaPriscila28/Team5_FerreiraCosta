@@ -28,11 +28,12 @@ namespace GerenciamentoDeBiblioteca
         {
             services.AddControllers();
             
+            services.AddInfrastructureSwagger();
             services.AddInfrastructure(configuration); // Certifique-se que este método de extensão está definido no seu projeto.
 
             // Adicionar Swagger/OpenAPI
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+           // services.AddSwaggerGen();
         }
 
         private static void Configure(WebApplication app)
@@ -48,7 +49,7 @@ namespace GerenciamentoDeBiblioteca
 
             app.UseHttpsRedirection();
 
-            app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().AllowCredentials().WithOrigins("http://localhost:4200"));
+            
             app.UseRouting();
 
             app.UseAuthentication();
@@ -60,7 +61,7 @@ namespace GerenciamentoDeBiblioteca
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapFallbackToController("index", "Fallback"); // Certifique-se que esse controller existe no seu projeto.
+                
             });
         }
     }

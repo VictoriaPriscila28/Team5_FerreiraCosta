@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.6.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.6.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GerenciamentoDeBiblioteca.Application\GerenciamentoDeBiblioteca.Application.csproj" />
     <ProjectReference Include="..\GerenciamentoDeBiblioteca.Domain\GerenciamentoDeBiblioteca.Domain.csproj" />
     <ProjectReference Include="..\GerenciamentoDeBiblioteca.Infra.Data\GerenciamentoDeBiblioteca.Infra.Data.csproj" />
