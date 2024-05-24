@@ -1,6 +1,0 @@
-C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca\obj\Debug\net6.0\GerenciamentoDeBiblioteca.csproj.AssemblyReference.cache
-C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca\obj\Debug\net6.0\GerenciamentoDeBiblioteca.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca\obj\Debug\net6.0\GerenciamentoDeBiblioteca.AssemblyInfoInputs.cache
-C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca\obj\Debug\net6.0\GerenciamentoDeBiblioteca.AssemblyInfo.cs
-C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca\obj\Debug\net6.0\GerenciamentoDeBiblioteca.csproj.CoreCompileInputs.cache
-C:\Users\victoria\source\repos\GerenciamentoDeBiblioteca\GerenciamentoDeBiblioteca\obj\Debug\net6.0\GerenciamentoDeBiblioteca.sourcelink.json

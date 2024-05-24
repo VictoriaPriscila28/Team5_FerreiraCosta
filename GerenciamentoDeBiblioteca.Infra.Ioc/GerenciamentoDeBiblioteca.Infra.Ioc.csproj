@@ -1,9 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GerenciamentoDeBiblioteca.Application\GerenciamentoDeBiblioteca.Application.csproj" />
+    <ProjectReference Include="..\GerenciamentoDeBiblioteca.Domain\GerenciamentoDeBiblioteca.Domain.csproj" />
+    <ProjectReference Include="..\GerenciamentoDeBiblioteca.Infra.Data\GerenciamentoDeBiblioteca.Infra.Data.csproj" />
+  </ItemGroup>
 
 </Project>

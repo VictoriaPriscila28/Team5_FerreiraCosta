@@ -1,1 +1,38 @@
+
+
+# Ignore build and publish outputs
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+.nuget/
+
+# Ignore Rider IDE files
+.idea/
+
+# Ignore JetBrains Rider editor config
+.idea/
+
+# Ignore VS Code directories
+.vscode/
+
+# Ignore configuration files
+*.config
+*.settings
+
+# Ignore logs
+*.log
+
 .vs/
