@@ -10,7 +10,7 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Context
 {
     public class ApplicationDbContext : DbContext
     {
-        protected ApplicationDbContext(DbContextOptions options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions options) : base(options) { }
         
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Emprestimo> Emprestimo { get; set; }
@@ -20,7 +20,7 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
     }
 }
