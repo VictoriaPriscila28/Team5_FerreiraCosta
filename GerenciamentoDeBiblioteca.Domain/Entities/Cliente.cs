@@ -18,6 +18,7 @@ namespace GerenciamentoDeBiblioteca.Domain.Entities
         public string CliNumero { get; private set; }
         public string CliTelefoneCelular { get; private set; }
         public string CliTelefoneFixo { get; private set; }
+        public ICollection<Emprestimo> Emprestimos { get; private set; }
 
 
 

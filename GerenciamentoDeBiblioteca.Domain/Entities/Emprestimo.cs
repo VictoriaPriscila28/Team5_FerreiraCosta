@@ -15,6 +15,9 @@ namespace GerenciamentoDeBiblioteca.Domain.Entities
         public DateTime DataEmprestimo { get; private set; }
         public DateTime DataEntrega { get; private set; }
         public bool Entregue { get; private set; }
+        public Cliente Cliente { get; private set; }
+        public Livro Livro { get; private set; }
+
 
         public Emprestimo(int id, int idCliente, DateTime dataEmprestimo,
             DateTime dataEntrega, bool entregue)

@@ -16,6 +16,8 @@ namespace GerenciamentoDeBiblioteca.Domain.Entities
         public DateTime LivroAnoPublicacao { get; private set; }
         public string LivroEdicao { get; private set; }
         public bool Excluido { get; private set; }
+        public ICollection<Emprestimo> Emprestimos { get; private set; }
+
      
 
         public Livro(int id, string livroNome, string livroAutor, string livroEditora, DateTime livroAnoPublicacao, string livroEdicao)
