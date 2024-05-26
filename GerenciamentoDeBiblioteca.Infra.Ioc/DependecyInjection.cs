@@ -1,4 +1,9 @@
-﻿using GerenciamentoDeBiblioteca.Infra.Data.Context;
+﻿using GerenciamentoDeBiblioteca.Application.Interfaces;
+using GerenciamentoDeBiblioteca.Application.Mappings;
+using GerenciamentoDeBiblioteca.Application.Services;
+using GerenciamentoDeBiblioteca.Domain.Interfaces;
+using GerenciamentoDeBiblioteca.Infra.Data.Context;
+using GerenciamentoDeBiblioteca.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +26,14 @@ namespace GerenciamentoDeBiblioteca.Infra.Ioc
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
 
             });
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+
+            //Repositories
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+
+            //Services
+            services.AddScoped<IClienteService, ClienteService>();
+
 
             return services;
         }

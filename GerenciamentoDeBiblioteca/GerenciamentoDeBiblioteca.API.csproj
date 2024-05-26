@@ -29,10 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\GerenciamentoDeBiblioteca.Infra.Ioc\GerenciamentoDeBiblioteca.Infra.Ioc.csproj" />
   </ItemGroup>
 

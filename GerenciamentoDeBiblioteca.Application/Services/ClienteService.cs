@@ -1,8 +1,12 @@
-﻿using GerenciamentoDeBiblioteca.Application.DTOs;
+﻿using AutoMapper;
+using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
+using GerenciamentoDeBiblioteca.Domain.Entities;
+using GerenciamentoDeBiblioteca.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,24 +14,39 @@ namespace GerenciamentoDeBiblioteca.Application.Services
 {
     public class ClienteService : IClienteService
     {
-        public Task<ClienteDTO> Alterar(ClienteDTO clienteDTO)
+        private readonly IClienteRepository _repository;
+        private readonly IMapper _mapper;
+
+        public  ClienteService(IClienteRepository repository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _repository = repository;
+            _mapper = mapper;
+        }
+        public async Task<ClienteDTO> Alterar(ClienteDTO clienteDTO)
+        {
+            var cliente = _mapper.Map<Cliente>(clienteDTO);
+            var clienteAlterado = await _repository.Alterar(cliente);
+            return _mapper.Map<ClienteDTO>(clienteAlterado);
         }
 
-        public Task<ClienteDTO> Excluir(int id)
+        public async Task<ClienteDTO> Excluir(int id)
         {
-            throw new NotImplementedException();
+            
+            var clienteExcluido = await _repository.Excluir(id);
+            return _mapper.Map<ClienteDTO>(clienteExcluido);
         }
 
-        public Task<ClienteDTO> Incluir(ClienteDTO clienteDTO)
+        public async Task<ClienteDTO> Incluir(ClienteDTO clienteDTO)
         {
-            throw new NotImplementedException();
+            var cliente = _mapper.Map<Cliente>(clienteDTO);
+            var clienteIncluido = await _repository.Incluir(cliente);
+            return _mapper.Map<ClienteDTO>(clienteIncluido);
         }
 
-        public Task<ClienteDTO> SelecionarAsync(int id)
+        public async Task<ClienteDTO> SelecionarAsync(int id)
         {
-            throw new NotImplementedException();
+            var cliente = await _repository.SelecionarAsync(id);
+            return _mapper.Map<ClienteDTO>(cliente);
         }
 
         public Task<ClienteDTO> SelecionarByCpfAsync(string cpf)
@@ -35,9 +54,10 @@ namespace GerenciamentoDeBiblioteca.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<ClienteDTO>> SelecionarTodosAsync()
+        public async Task<IEnumerable<ClienteDTO>> SelecionarTodosAsync()
         {
-            throw new NotImplementedException();
+            var clientes = await _repository.SelecionarTodosAsync();
+            return _mapper.Map<IEnumerable<ClienteDTO>>(clientes); ;
         }
     }
 }
