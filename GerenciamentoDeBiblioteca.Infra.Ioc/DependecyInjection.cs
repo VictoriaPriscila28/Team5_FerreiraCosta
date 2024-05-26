@@ -4,9 +4,11 @@ using GerenciamentoDeBiblioteca.Application.Services;
 using GerenciamentoDeBiblioteca.Domain.Interfaces;
 using GerenciamentoDeBiblioteca.Infra.Data.Context;
 using GerenciamentoDeBiblioteca.Infra.Data.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,28 @@ namespace GerenciamentoDeBiblioteca.Infra.Ioc
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
 
             });
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }
+            ).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+
+                    ValidIssuer = configuration["jwt:issuer"],
+                    ValidAudience = configuration["jwt:audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(configuration["jwt: secretKey"])),
+                    ClockSkew = TimeSpan.Zero,
+                };
+            });
+
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
             //Repositories
