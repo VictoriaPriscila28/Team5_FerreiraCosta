@@ -12,6 +12,7 @@ namespace GerenciamentoDeBiblioteca.Domain.Account
         Task<bool> AuthenticateAsync(string email, string senha);
         Task<bool> UserExists(string email);
         public string GenerateToken(int id, string email);
+        public Task<Usuario> GetUserByEmail(string email);
         
     }
 }

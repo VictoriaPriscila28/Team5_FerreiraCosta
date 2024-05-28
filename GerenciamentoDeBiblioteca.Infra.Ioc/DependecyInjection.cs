@@ -1,8 +1,10 @@
 ﻿using GerenciamentoDeBiblioteca.Application.Interfaces;
 using GerenciamentoDeBiblioteca.Application.Mappings;
 using GerenciamentoDeBiblioteca.Application.Services;
+using GerenciamentoDeBiblioteca.Domain.Account;
 using GerenciamentoDeBiblioteca.Domain.Interfaces;
 using GerenciamentoDeBiblioteca.Infra.Data.Context;
+using GerenciamentoDeBiblioteca.Infra.Data.Identity;
 using GerenciamentoDeBiblioteca.Infra.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +21,7 @@ namespace GerenciamentoDeBiblioteca.Infra.Ioc
 {
     public static class DependecyInjection
     {
+
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,
             IConfiguration configuration)
         {
@@ -27,11 +30,14 @@ namespace GerenciamentoDeBiblioteca.Infra.Ioc
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
 
+                //options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
+                //    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
             });
-            services.AddAuthentication(options =>
+
+            services.AddAuthentication(opt =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }
             ).AddJwtBearer(options =>
             {
@@ -45,19 +51,24 @@ namespace GerenciamentoDeBiblioteca.Infra.Ioc
                     ValidIssuer = configuration["jwt:issuer"],
                     ValidAudience = configuration["jwt:audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes(configuration["jwt: secretKey"])),
-                    ClockSkew = TimeSpan.Zero,
+                        Encoding.UTF8.GetBytes(configuration["jwt:secretKey"])),
+                    ClockSkew = TimeSpan.Zero
                 };
             });
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
-            //Repositories
+            // Repositories
             services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            
 
-            //Services
+
+            // Services
             services.AddScoped<IClienteService, ClienteService>();
-
+            services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IAuthenticate, AuthenticateService>();
+           
 
             return services;
         }

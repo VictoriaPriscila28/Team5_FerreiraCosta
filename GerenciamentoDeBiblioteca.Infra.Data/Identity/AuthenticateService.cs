@@ -1,4 +1,5 @@
 ﻿using GerenciamentoDeBiblioteca.Domain.Account;
+using GerenciamentoDeBiblioteca.Domain.Entities;
 using GerenciamentoDeBiblioteca.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -67,6 +68,11 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Identity
                 signingCredentials: credentials
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public async Task<Usuario>GetUserByEmail( string email)
+        {
+            return await _context.Usuario.Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefaultAsync();
         }
 
         public async Task<bool> UserExists(string email)

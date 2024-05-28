@@ -34,6 +34,8 @@ namespace GerenciamentoDeBiblioteca.Domain.Entities
             PasswordSalt = passwordSalt;
         }
 
+       
+
         private void ValidateDomain(string nome, string email)
         {
             DomainExceptionValidation.When(nome.Length > 250, "O nome não pode ultrapassar de 250 caracteres.");
