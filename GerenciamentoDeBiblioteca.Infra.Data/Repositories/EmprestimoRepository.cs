@@ -53,7 +53,7 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Repositories
 
         public async Task<IEnumerable<Emprestimo>> SelecionarTodosAsync()
         {
-            return await _context.Emprestimo.ToListAsync();
+            return await _context.Emprestimo.Include(x => x.Cliente).Include(x => x.Livro).ToListAsync();
         }
     }
 }

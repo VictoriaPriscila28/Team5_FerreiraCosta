@@ -17,9 +17,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             
         }
         [HttpPost]
-        public async Task<ActionResult>Incluir(EmprestimoDTO emprestimoDTO)
+        public async Task<ActionResult>Incluir(EmprestimoPostDTO emprestimoPostDTO)
         {
-            var emprestimoDTOIncluido = await _emprestimoService.Incluir(emprestimoDTO);
+            emprestimoPostDTO.DataEmprestimo = DateTime.Now;
+            emprestimoPostDTO.Entregue = false;
+            var emprestimoDTOIncluido = await _emprestimoService.Incluir(emprestimoPostDTO);
             if (emprestimoDTOIncluido == null)
             {
                 return BadRequest("Ocorreu um erro ao incluir  o emprestimo.");
