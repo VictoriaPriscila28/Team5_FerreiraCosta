@@ -61,14 +61,17 @@ namespace GerenciamentoDeBiblioteca.Infra.Ioc
             // Repositories
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-            
+            services.AddScoped<ILivroRepository, LivroRepository>();
+
+
 
 
             // Services
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IAuthenticate, AuthenticateService>();
-           
+            services.AddScoped<ILivroService, LivroService>();
+
 
             return services;
         }

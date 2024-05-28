@@ -1,6 +1,7 @@
 ﻿using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
 using GerenciamentoDeBiblioteca.Application.Services;
+using GerenciamentoDeBiblioteca.Infra.Ioc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -46,8 +47,13 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
         [HttpDelete]
         public async Task<ActionResult> Excluir(int id)
         {
-            var userId = int.Parse(User.FindFirst("id").Value);
+            var userId = User.GetId();
             var usuario = await _usuarioService.SelecionarAsync(userId);
+
+            if (!usuario.IsAdmin)
+            {
+                return Unauthorized("Você não tem permissão para excluir clientes.");
+            }
 
             var clienteDTOExcluido = await _clienteService.Excluir(id);
             if (clienteDTOExcluido == null)
