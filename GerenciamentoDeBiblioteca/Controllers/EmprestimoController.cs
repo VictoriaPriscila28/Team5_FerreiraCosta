@@ -31,8 +31,18 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Alterar(EmprestimoDTO emprestimoDTO)
+        public async Task<ActionResult> Alterar(EmprestimoPutDTO emprestimoPutDTO)
         {
+            var emprestimoDTO = await _emprestimoService.SelecionarAsync(emprestimoPutDTO.Id);
+
+            if (emprestimoDTO == null)
+            {
+                return NotFound("Empréstimo não encontrado.");
+            }
+
+            emprestimoDTO.DataEntrega = emprestimoPutDTO.DataEntrega;
+            emprestimoDTO.Entregue = emprestimoPutDTO.Entregue;
+
             var emprestimoDTOAlterado = await _emprestimoService.Alterar(emprestimoDTO);
             if (emprestimoDTOAlterado == null)
             {
