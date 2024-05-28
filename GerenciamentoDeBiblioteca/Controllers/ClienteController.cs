@@ -1,18 +1,23 @@
 ﻿using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
+using GerenciamentoDeBiblioteca.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciamentoDeBiblioteca.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class ClienteController : Controller
     {
         private readonly IClienteService _clienteService;
+        private readonly IUsuarioService _usuarioService;
 
-        public ClienteController(IClienteService clienteService)
+        public ClienteController(IClienteService clienteService, IUsuarioService usuarioService)
         {
             _clienteService = clienteService;
+            _usuarioService = usuarioService;
         }
 
         [HttpPost]
@@ -41,6 +46,9 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
         [HttpDelete]
         public async Task<ActionResult> Excluir(int id)
         {
+            var userId = int.Parse(User.FindFirst("id").Value);
+            var usuario = await _usuarioService.SelecionarAsync(userId);
+
             var clienteDTOExcluido = await _clienteService.Excluir(id);
             if (clienteDTOExcluido == null)
             {

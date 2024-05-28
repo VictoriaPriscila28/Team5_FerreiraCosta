@@ -23,5 +23,6 @@ namespace GerenciamentoDeBiblioteca.Application.DTOs
         [NotMapped]
         public string Password { get; set; }
         //[JsonIgnore]
+        public bool IsAdmin { get; set; }
     }
 }
