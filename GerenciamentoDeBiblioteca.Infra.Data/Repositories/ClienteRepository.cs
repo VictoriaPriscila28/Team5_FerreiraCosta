@@ -57,9 +57,9 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Repositories
             return await _context.Cliente.Where(x => x.CliCPF.Equals(cpf) && !x.Excluido).FirstOrDefaultAsync();
         }
 
-        public Task<IEnumerable<Cliente>> SelecionarTodosAsync()
+        public async Task<IEnumerable<Cliente>> SelecionarTodosAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Cliente.ToListAsync();
         }
     }
 

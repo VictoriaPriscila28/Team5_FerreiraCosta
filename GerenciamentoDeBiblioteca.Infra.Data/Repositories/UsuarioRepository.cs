@@ -60,9 +60,9 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Usuario>> SelecionarTodosAsync()
+        public async Task<IEnumerable<Usuario>> SelecionarTodosAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Usuario.ToListAsync();
         }
     }
 }

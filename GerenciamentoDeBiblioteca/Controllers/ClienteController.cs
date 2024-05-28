@@ -75,7 +75,7 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> SelecionarTodos(int id)
+        public async Task<ActionResult> SelecionarTodos()
         {
             var clientesDTO = await _clienteService.SelecionarTodosAsync();
             

@@ -16,6 +16,9 @@ namespace GerenciamentoDeBiblioteca.Application.Mappings
             CreateMap<Cliente, ClienteDTO>().ReverseMap();
             CreateMap<Usuario, UsuarioDTO>().ReverseMap();
             CreateMap<Livro, LivroDTO>().ReverseMap();
+            CreateMap<Emprestimo, EmprestimoDTO>().ReverseMap()
+                .ForMember(dest => dest.Livro, options => options.MapFrom(x => x.LivroDTO))
+                .ForMember(dest => dest.Cliente, options => options.MapFrom(x => x.ClienteDTO));
 
         }
     }
