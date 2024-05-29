@@ -22,6 +22,7 @@ namespace GerenciamentoDeBiblioteca.Application.Mappings
                 .ForMember(dest => dest.ClienteDTO, options => options.MapFrom(x => x.Cliente));
             CreateMap<Emprestimo, EmprestimoPostDTO>().ReverseMap();
             CreateMap<QuantidadeItens, QuantidadeItensDTO>().ReverseMap();
+            CreateMap<Multa, MultaDTO>().ReverseMap();
 
         }
     }

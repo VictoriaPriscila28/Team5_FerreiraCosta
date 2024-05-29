@@ -17,6 +17,7 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Context
 
         public DbSet<Livro> Livro { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Multa> Multas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
