@@ -26,6 +26,9 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.EntitiesConfiguration
             builder.HasOne(x => x.Livro).WithMany(x => x.Emprestimos)
                 .HasForeignKey(x => x.IdLivro).OnDelete(DeleteBehavior.NoAction);
 
+            builder.HasMany(x => x.Multas).WithOne(x => x.Emprestimo)
+                   .HasForeignKey(x => x.EmprestimoId).OnDelete(DeleteBehavior.NoAction);
+
         }
     }
 }
