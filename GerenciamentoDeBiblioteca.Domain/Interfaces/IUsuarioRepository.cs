@@ -1,4 +1,5 @@
 ﻿using GerenciamentoDeBiblioteca.Domain.Entities;
+using GerenciamentoDeBiblioteca.Domain.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace GerenciamentoDeBiblioteca.Domain.Interfaces
         Task<Usuario> SelecionarByCPFAsync(int id);
         Task<IEnumerable<Usuario>> SelecionarTodosAsync();
         Task<bool> ExisteUsuarioCadastradoAsync();
+        Task<PagedList<Usuario>> SelecionarByFiltroAsync(string nome, string email, bool? isAdmin, bool? isNotAdmin, bool? ativo, bool? inativo, int pageNumber, int pageSize);
     }
 }

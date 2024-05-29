@@ -1,6 +1,8 @@
 ﻿using GerenciamentoDeBiblioteca.Domain.Entities;
 using GerenciamentoDeBiblioteca.Domain.Interfaces;
+using GerenciamentoDeBiblioteca.Domain.Pagination;
 using GerenciamentoDeBiblioteca.Infra.Data.Context;
+using GerenciamentoDeBiblioteca.Infra.Data.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -51,9 +53,10 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Repositories
             return await _context.Emprestimo.Include(x => x.Cliente).Include(x => x.Livro).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Emprestimo>> SelecionarTodosAsync()
+        public async Task<PagedList<Emprestimo>> SelecionarTodosAsync(int pageNumber, int pageSize)
         {
-            return await _context.Emprestimo.Include(x => x.Cliente).Include(x => x.Livro).ToListAsync();
+            var query = _context.Emprestimo.Include(x => x.Cliente).Include(x => x.Livro).AsQueryable();
+            return await PaginationHelper.CreateAsync(query,pageNumber,pageSize);
         }
 
         public async Task<bool> VerificaDisponibilidadeAsync(int idLivro)

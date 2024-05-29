@@ -3,6 +3,7 @@ using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
 using GerenciamentoDeBiblioteca.Domain.Entities;
 using GerenciamentoDeBiblioteca.Domain.Interfaces;
+using GerenciamentoDeBiblioteca.Domain.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,21 @@ namespace GerenciamentoDeBiblioteca.Application.Services
             var usuario = _mapper.Map<Usuario>(usuarioDTO);
             var usuarioAlterado = await _repository.Alterar(usuario);
             return _mapper.Map<UsuarioDTO>(usuarioAlterado);
+        }
+
+        public async Task<UsuarioPutDTO> Alterar(UsuarioPutDTO usuarioPutDTO)
+        {
+            var usuario = _mapper.Map<Usuario>(usuarioPutDTO);
+
+            if (usuarioPutDTO.Password != null)
+            {
+                using var hmac = new HMACSHA512();
+                byte[] passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(usuarioPutDTO.Password));
+                byte[] passwordSalt = hmac.Key;
+            }
+
+            var usuarioAlterado = await _repository.Alterar(usuario);
+            return _mapper.Map<UsuarioPutDTO>(usuarioAlterado); 
         }
 
         public async Task<UsuarioDTO> Excluir(int id)
@@ -65,10 +81,24 @@ namespace GerenciamentoDeBiblioteca.Application.Services
             return _mapper.Map<UsuarioDTO>(usuario);
         }
 
+        public async Task<PagedList<UsuarioDTO>> SelecionarByFiltroAsync(string nome, string email, bool? isAdmin, bool? isNotAdmin, bool? ativo, bool? inativo, int pageNumber, int pageSize)
+        {
+            var usuarios = await _repository.SelecionarByFiltroAsync(
+            nome, email, isAdmin, isNotAdmin, ativo, inativo, pageNumber, pageSize);
+            var usuariosDTO = _mapper.Map<IEnumerable<UsuarioDTO>>(usuarios);
+            return new PagedList<UsuarioDTO>
+                (usuariosDTO, pageNumber, usuarios.TotalPages, usuarios.PageSize, usuarios.TotalCount);
+        }
+
         public async Task<IEnumerable<UsuarioDTO>> SelecionarTodosAsync()
         {
             var usuarios = await _repository.SelecionarTodosAsync();
             return _mapper.Map<IEnumerable<UsuarioDTO>>(usuarios) ;
-        }   
+        }
+
+        public Task<PagedList<UsuarioDTO>> SelecionarTodosAsync(int pageNumber, int pageSize)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

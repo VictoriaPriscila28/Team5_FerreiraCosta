@@ -1,9 +1,11 @@
-﻿using GerenciamentoDeBiblioteca.API.Models;
+﻿using GerenciamentoDeBiblioteca.API.Extensions;
+using GerenciamentoDeBiblioteca.API.Models;
 using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
 using GerenciamentoDeBiblioteca.Domain.Account;
 using GerenciamentoDeBiblioteca.Infra.Data.Identity;
 using GerenciamentoDeBiblioteca.Infra.Ioc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciamentoDeBiblioteca.API.Controllers
@@ -85,14 +87,117 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             }
 
             var usuario = await _authenticateService.GetUserByEmail(loginModel.Email);
+
             var token = _authenticateService.GenerateToken(usuario.Id, usuario.Email);
 
             return new UserToken
             {
                 Token = token,
+                IsAdmin = usuario.IsAdmin,
+                Email = usuario.Email
             };
 
+
+
+
         }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult> SelecionarTodos([FromQuery] PaginationParams paginationParams)
+        {
+            var userId = User.GetId();
+            var user = await _usuarioService.SelecionarAsync(userId);
+
+            if (!user.IsAdmin)
+            {
+                return Unauthorized("Você não tem permissão para consultar os usuários do sistema.");
+            }
+
+            var usuarios = await _usuarioService.SelecionarTodosAsync(paginationParams.PageNumber, paginationParams.PageSize);
+            Response.AddPaginationHeader(new PaginationHeader(paginationParams.PageNumber, usuarios.PageSize,
+                usuarios.TotalCount, usuarios.TotalPages));
+            return Ok(usuarios);
+        }
+
+        [HttpGet("{id}")]
+        [Authorize]
+        public async Task<ActionResult> SelecionarById(int id)
+        {
+            var userId = User.GetId();
+            var user = await _usuarioService.SelecionarAsync(userId);
+
+            if (id == 0)
+            {
+                id = userId;
+            }
+
+            if (!user.IsAdmin && user.Id != id)
+            {
+                return Unauthorized("Você não tem permissão para consultar os usuários do sistema.");
+            }
+
+            var usuario = await _usuarioService.SelecionarAsync((int)id);
+            return Ok(usuario);
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize]
+        public async Task<ActionResult> Excluir(int id)
+        {
+            var userId = User.GetId();
+            var user = await _usuarioService.SelecionarAsync(userId);
+
+            if (!user.IsAdmin)
+            {
+                return Unauthorized("Você não tem permissão para excluir os usuários do sistema.");
+            }
+
+            var usuario = await _usuarioService.Excluir(id);
+            return Ok(usuario);
+        }
+
+        [HttpPut]
+        [Authorize]
+        public async Task<ActionResult> Alterar(UsuarioPutDTO usuarioPutDTO)
+        {
+            var userId = User.GetId();
+            var user = await _usuarioService.SelecionarAsync(userId);
+
+
+            if (!user.IsAdmin && usuarioPutDTO.Id != userId)
+            {
+                return Unauthorized("Você não tem permissão para alterar os usuários do sistema.");
+            }
+
+            if (!user.IsAdmin && usuarioPutDTO.Id == userId && usuarioPutDTO.IsAdmin)
+            {
+                return Unauthorized("Você não tem permissão para definir você mesmo como administrador.");
+            }
+            var usuario = await _usuarioService.Alterar(usuarioPutDTO);
+
+            return Ok(new { message = "Usuário alterado com sucesso!" });
+        }
+
+        [HttpGet("filtrar")]
+        [Authorize]
+        public async Task<ActionResult> SelecionarTodosByFiltro([FromQuery] FiltroUsuario filtroUsuario)
+        {
+            var userId = User.GetId();
+            var user = await _usuarioService.SelecionarAsync(userId);
+
+            if (!user.IsAdmin)
+            {
+                return Unauthorized("Você não tem permissão para consultar os usuários do sistema.");
+            }
+
+            var usuarios = await _usuarioService.SelecionarByFiltroAsync(filtroUsuario.Nome, filtroUsuario.Email,
+                filtroUsuario.IsAdmin, filtroUsuario.IsNotAdmin, filtroUsuario.Ativo, filtroUsuario.Inativo, filtroUsuario.PageNumber, filtroUsuario.PageSize);
+            Response.AddPaginationHeader(new PaginationHeader(filtroUsuario.PageNumber, usuarios.PageSize,
+                usuarios.TotalCount, usuarios.TotalPages));
+            return Ok(usuarios);
+        }
+
 
 
 

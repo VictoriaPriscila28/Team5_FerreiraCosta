@@ -1,6 +1,8 @@
 ﻿using GerenciamentoDeBiblioteca.Domain.Entities;
 using GerenciamentoDeBiblioteca.Domain.Interfaces;
+using GerenciamentoDeBiblioteca.Domain.Pagination;
 using GerenciamentoDeBiblioteca.Infra.Data.Context;
+using GerenciamentoDeBiblioteca.Infra.Data.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -63,6 +65,42 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Repositories
         public Task<Usuario> SelecionarByCPFAsync(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public  async Task<PagedList<Usuario>> SelecionarByFiltroAsync(string nome, string email, bool? isAdmin, bool? isNotAdmin, bool? ativo, bool? inativo, int pageNumber, int pageSize)
+        {
+            var query = _context.Usuario.OrderByDescending(x => x.Id).AsQueryable();
+
+            if (!string.IsNullOrEmpty(nome))
+            {
+                query = query.Where(x => x.Nome.ToLower().Equals(nome.ToLower())
+                                     || x.Nome.ToLower().Contains(nome.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(email))
+            {
+                query = query.Where(x => x.Email.ToLower().Equals(email.ToLower())
+                                     || x.Email.ToLower().Contains(email.ToLower()));
+            }
+
+            if (isAdmin.HasValue && isAdmin == true)
+            {
+                query = query.Where(x => x.IsAdmin == true);
+            }
+            if (isNotAdmin.HasValue && isNotAdmin == true)
+            {
+                query = query.Where(x => x.IsAdmin == false);
+            }
+            if (ativo.HasValue && ativo == true)
+            {
+                query = query.Where(x => x.Ativo == true);
+            }
+            if (inativo.HasValue && inativo == true)
+            {
+                query = query.Where(x => x.Ativo == false);
+            }
+
+            return await PaginationHelper.CreateAsync(query, pageNumber, pageSize);
         }
 
         public async Task<IEnumerable<Usuario>> SelecionarTodosAsync()

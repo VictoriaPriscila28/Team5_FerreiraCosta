@@ -1,4 +1,6 @@
-﻿using GerenciamentoDeBiblioteca.Application.DTOs;
+﻿using GerenciamentoDeBiblioteca.API.Extensions;
+using GerenciamentoDeBiblioteca.API.Models;
+using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -83,10 +85,14 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> SelecionarTodos()
+        public async Task<ActionResult> SelecionarTodos([FromQuery]PaginationParams paginationParams)
         {
-            var emprestimoDTO = await _emprestimoService.SelecionarTodosAsync();
-            return Ok(emprestimoDTO);
+            var emprestimosDTO = await _emprestimoService.SelecionarTodosAsync
+                (paginationParams.PageNumber, paginationParams.PageSize);
+
+            Response.AddPaginationHeader(new PaginationHeader(paginationParams.PageNumber,
+                paginationParams.PageSize, emprestimosDTO.TotalCount, emprestimosDTO.TotalPages));
+            return Ok(emprestimosDTO);
         }
 
     }
