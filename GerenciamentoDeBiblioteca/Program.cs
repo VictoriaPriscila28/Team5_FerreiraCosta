@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using GerenciamentoDeBiblioteca.Infra.Ioc;
+using GerenciamentoDeBiblioteca.API.Middleware;
 
 namespace GerenciamentoDeBiblioteca
 {
@@ -45,7 +46,7 @@ namespace GerenciamentoDeBiblioteca
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GerenciamentoDeBiblioteca v1"));
             }
 
-            
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
