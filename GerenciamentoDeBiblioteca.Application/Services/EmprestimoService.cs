@@ -58,5 +58,10 @@ namespace GerenciamentoDeBiblioteca.Application.Services
             return await _repository.VerificaDisponibilidadeAsync(idLivro);
 
         }
+
+        public async Task<bool> VerificaLivrosAsync(int idLivro)
+        {
+            return await _repository.VerificaLivrosAsync(idLivro);
+        }
     }
 }

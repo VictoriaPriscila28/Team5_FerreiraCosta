@@ -1,4 +1,5 @@
 ﻿using GerenciamentoDeBiblioteca.Domain.Entities;
+using GerenciamentoDeBiblioteca.Domain.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace GerenciamentoDeBiblioteca.Domain.Interfaces
         Task<Cliente> Excluir(int id);
         Task<Cliente> SelecionarAsync(int id);
         Task<Cliente> SelecionarByCPFAsync(string cpf);
-        Task<IEnumerable<Cliente>> SelecionarTodosAsync();
+        Task<PagedList<Cliente>> SelecionarTodosAsync(int pageNumber, int pageSize);
         
     }
 }

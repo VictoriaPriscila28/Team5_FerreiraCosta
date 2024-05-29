@@ -1,4 +1,5 @@
 ﻿using GerenciamentoDeBiblioteca.Application.DTOs;
+using GerenciamentoDeBiblioteca.Domain.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,6 @@ namespace GerenciamentoDeBiblioteca.Application.Interfaces
         Task<ClienteDTO> Excluir(int id);
         Task<ClienteDTO> SelecionarAsync(int id);
         Task<ClienteDTO> SelecionarByCpfAsync(string cpf);
-        Task<IEnumerable<ClienteDTO>> SelecionarTodosAsync();
+        Task<PagedList<ClienteDTO>> SelecionarTodosAsync(int pageNumber, int pageSize);
     }
 }

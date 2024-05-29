@@ -62,5 +62,10 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Repositories
                 Where(x => x.IdLivro == idLivro && x.Entregue == false).AnyAsync();
             return !existeEmprestimo;
         }
+
+        public Task<bool> VerificaLivrosAsync(int idLivro)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -3,6 +3,7 @@ using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
 using GerenciamentoDeBiblioteca.Domain.Entities;
 using GerenciamentoDeBiblioteca.Domain.Interfaces;
+using GerenciamentoDeBiblioteca.Domain.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,10 +55,12 @@ namespace GerenciamentoDeBiblioteca.Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<ClienteDTO>> SelecionarTodosAsync()
+        public async Task<PagedList<ClienteDTO>> SelecionarTodosAsync(int pageNumber, int pageSize)
         {
-            var clientes = await _repository.SelecionarTodosAsync();
-            return _mapper.Map<IEnumerable<ClienteDTO>>(clientes); ;
+            var clientes = await _repository.SelecionarTodosAsync(pageNumber, pageSize);
+            var clientesDTO =  _mapper.Map<IEnumerable<ClienteDTO>>(clientes);
+
+            return new PagedList<ClienteDTO>(clientesDTO, pageNumber, pageSize, clientes.TotalCount);
         }
     }
 }

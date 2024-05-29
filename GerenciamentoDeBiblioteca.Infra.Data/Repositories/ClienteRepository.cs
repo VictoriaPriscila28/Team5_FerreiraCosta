@@ -1,6 +1,8 @@
 ﻿using GerenciamentoDeBiblioteca.Domain.Entities;
 using GerenciamentoDeBiblioteca.Domain.Interfaces;
+using GerenciamentoDeBiblioteca.Domain.Pagination;
 using GerenciamentoDeBiblioteca.Infra.Data.Context;
+using GerenciamentoDeBiblioteca.Infra.Data.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -57,9 +59,10 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Repositories
             return await _context.Cliente.Where(x => x.CliCPF.Equals(cpf) && !x.Excluido).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Cliente>> SelecionarTodosAsync()
+        public async Task<PagedList<Cliente>> SelecionarTodosAsync(int pageNumber, int pageSize)
         {
-            return await _context.Cliente.ToListAsync();
+            var query = _context.Cliente.Where(x => !x.Excluido).OrderByDescending(x => x.Id).AsQueryable();
+            return await PaginationHelper.CreateAsync(query, pageNumber, pageSize);
         }
     }
 

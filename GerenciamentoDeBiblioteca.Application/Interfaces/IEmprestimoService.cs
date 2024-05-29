@@ -15,6 +15,6 @@ namespace GerenciamentoDeBiblioteca.Application.Interfaces
         Task<EmprestimoDTO> SelecionarAsync(int id);
         Task<IEnumerable<EmprestimoDTO>> SelecionarTodosAsync();
         Task<bool> VerificaDisponibilidadeAsync(int idLivro);
-
+        Task<bool> VerificaLivrosAsync(int idLivro);
     }
 }

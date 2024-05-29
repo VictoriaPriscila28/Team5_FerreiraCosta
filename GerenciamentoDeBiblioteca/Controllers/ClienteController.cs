@@ -1,4 +1,6 @@
-﻿using GerenciamentoDeBiblioteca.Application.DTOs;
+﻿using GerenciamentoDeBiblioteca.API.Extensions;
+using GerenciamentoDeBiblioteca.API.Models;
+using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
 using GerenciamentoDeBiblioteca.Application.Services;
 using GerenciamentoDeBiblioteca.Infra.Ioc;
@@ -75,9 +77,13 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> SelecionarTodos()
+        public async Task<ActionResult> SelecionarTodos([FromQuery]PaginationParams paginationParams)
         {
-            var clientesDTO = await _clienteService.SelecionarTodosAsync();
+            var clientesDTO = await _clienteService.SelecionarTodosAsync
+                (paginationParams.PageNumber, paginationParams.PageSize);
+
+            Response.AddPaginationHeader(new PaginationHeader(clientesDTO.CurrentPage,
+                clientesDTO.PageSize, clientesDTO.TotalCount, clientesDTO.TotalPages));
             
             return Ok(clientesDTO);
         }
