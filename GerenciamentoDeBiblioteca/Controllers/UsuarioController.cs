@@ -3,6 +3,7 @@ using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
 using GerenciamentoDeBiblioteca.Domain.Account;
 using GerenciamentoDeBiblioteca.Infra.Data.Identity;
+using GerenciamentoDeBiblioteca.Infra.Ioc;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciamentoDeBiblioteca.API.Controllers
@@ -32,6 +33,26 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             if (emailExiste) 
             {
                 return BadRequest("Este email já possui um cadastro.");
+            }
+
+            var existeUsuarioSistema = await _usuarioService.ExisteUsuarioCadastradoAsync();
+            if (!existeUsuarioSistema)
+            {
+                usuarioDTO.IsAdmin = true;
+            }
+            else
+            {
+                if(User.FindFirst("id") == null)
+                {
+                    return Unauthorized();
+                }
+
+                var userId = User.GetId();
+                var user = await _usuarioService.SelecionarAsync(userId);
+                if (!user.IsAdmin)
+                {
+                    return Unauthorized("Você não tem permissão para incluir novos usuários.");
+                }
             }
 
             var usuario = await _usuarioService.Incluir(usuarioDTO);

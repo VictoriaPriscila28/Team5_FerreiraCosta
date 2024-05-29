@@ -15,5 +15,6 @@ namespace GerenciamentoDeBiblioteca.Domain.Interfaces
         Task<Usuario> SelecionarAsync(int id);
         Task<Usuario> SelecionarByCPFAsync(int id);
         Task<IEnumerable<Usuario>> SelecionarTodosAsync();
+        Task<bool> ExisteUsuarioCadastradoAsync();
     }
 }

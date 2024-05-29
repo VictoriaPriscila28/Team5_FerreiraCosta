@@ -19,6 +19,12 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
         [HttpPost]
         public async Task<ActionResult>Incluir(EmprestimoPostDTO emprestimoPostDTO)
         {
+            var disponivel = await _emprestimoService.VerificaDisponibilidadeAsync(emprestimoPostDTO.IdLivro);
+            if(!disponivel)
+            {
+                return BadRequest("O livro não está disponível para empréstimo");
+            }
+
             emprestimoPostDTO.DataEmprestimo = DateTime.Now;
             emprestimoPostDTO.Entregue = false;
             var emprestimoDTOIncluido = await _emprestimoService.Incluir(emprestimoPostDTO);

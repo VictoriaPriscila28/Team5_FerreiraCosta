@@ -36,6 +36,11 @@ namespace GerenciamentoDeBiblioteca.Application.Services
             return _mapper.Map<UsuarioDTO>(usuario);
         }
 
+        public async Task<bool> ExisteUsuarioCadastradoAsync()
+        {
+            return await _repository.ExisteUsuarioCadastradoAsync();
+        }
+
         public async Task<UsuarioDTO> Incluir(UsuarioDTO usuarioDTO)
         {
             var usuario = _mapper.Map<Usuario>(usuarioDTO);
