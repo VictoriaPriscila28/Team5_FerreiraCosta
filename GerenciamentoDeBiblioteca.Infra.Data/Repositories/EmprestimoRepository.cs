@@ -28,6 +28,8 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Repositories
             return emprestimo;
         }
 
+       
+
         public async Task<Emprestimo> Excluir(int id)
         {
             var emprestimo = await _context.Emprestimo.FindAsync(id);

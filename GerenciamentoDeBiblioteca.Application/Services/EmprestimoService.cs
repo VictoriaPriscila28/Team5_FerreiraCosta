@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp;
 
 namespace GerenciamentoDeBiblioteca.Application.Services
 {
@@ -28,6 +29,8 @@ namespace GerenciamentoDeBiblioteca.Application.Services
             var emprestimoAlterado = await _repository.Alterar(emprestimo);
             return _mapper.Map<EmprestimoDTO>(emprestimoAlterado);
         }
+
+     
 
         public async Task<EmprestimoDTO> Excluir(int id)
         {

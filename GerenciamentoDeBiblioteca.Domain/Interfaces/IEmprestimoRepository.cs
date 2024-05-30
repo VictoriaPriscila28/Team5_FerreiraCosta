@@ -18,5 +18,8 @@ namespace GerenciamentoDeBiblioteca.Domain.Interfaces
         Task<PagedList<Emprestimo>> SelecionarTodosAsync(int pageNumber, int pageSize);
         Task<bool> VerificaDisponibilidadeAsync(int idLivro);
         Task<bool> VerificaLivrosAsync(int idLivro);
+    
+
+
     }
 }
