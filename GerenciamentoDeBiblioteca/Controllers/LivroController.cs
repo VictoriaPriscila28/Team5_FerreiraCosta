@@ -3,6 +3,7 @@ using GerenciamentoDeBiblioteca.API.Models;
 using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
 using GerenciamentoDeBiblioteca.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciamentoDeBiblioteca.API.Controllers
@@ -12,6 +13,7 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
 
 
     public class LivroController : Controller

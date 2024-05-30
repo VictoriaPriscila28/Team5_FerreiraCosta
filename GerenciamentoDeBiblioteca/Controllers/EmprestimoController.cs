@@ -2,6 +2,7 @@
 using GerenciamentoDeBiblioteca.API.Models;
 using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp;
 
@@ -12,6 +13,7 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class EmprestimoController : Controller
     {
         private readonly IEmprestimoService _emprestimoService;

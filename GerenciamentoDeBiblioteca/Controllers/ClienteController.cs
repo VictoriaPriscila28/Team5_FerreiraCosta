@@ -14,6 +14,7 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
 
     public class ClienteController : Controller
     {
