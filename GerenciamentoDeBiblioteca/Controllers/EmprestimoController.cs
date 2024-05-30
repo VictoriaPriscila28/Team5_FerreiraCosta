@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciamentoDeBiblioteca.API.Controllers
 {
+    /// <summary>
+    /// Controlador responsável por lidar com as solicitações relacionadas aos empréstimos na API.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class EmprestimoController : Controller
@@ -18,6 +21,12 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             _emprestimoService = emprestimoService;
             
         }
+
+        /// <summary>
+        /// Realiza a inclusão de um novo empréstimo.
+        /// </summary>
+        /// <param name="emprestimoPostDTO">Os dados do empréstimo a serem incluídos.</param>
+        /// <returns>Um ActionResult representando o resultado da inclusão.</returns>
         [HttpPost]
         public async Task<ActionResult>Incluir(EmprestimoPostDTO emprestimoPostDTO)
         {
@@ -38,6 +47,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok("Emprestimo incluído com sucesso.");
         }
 
+        /// <summary>
+        /// Altera os dados de um empréstimo existente.
+        /// </summary>
+        /// <param name="emprestimoPutDTO">Os novos dados do empréstimo.</param>
+        /// <returns>Um ActionResult representando o resultado da alteração.</returns>
         [HttpPut]
         public async Task<ActionResult> Alterar(EmprestimoPutDTO emprestimoPutDTO)
         {
@@ -60,6 +74,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok("Emprestimo alterado com sucesso.");
         }
 
+        /// <summary>
+        /// Exclui um empréstimo existente com base no Id.
+        /// </summary>
+        /// <param name="id">O Id do empréstimo a ser excluído.</param>
+        /// <returns>Um ActionResult representando o resultado da exclusão.</returns>
         [HttpDelete]
         public async Task<ActionResult> Excluir(int id)
         {
@@ -72,6 +91,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok("Emprestimo excluido com sucesso.");
         }
 
+        /// <summary>
+        /// Seleciona um empréstimo com base no Id.
+        /// </summary>
+        /// <param name="id">O Id do empréstimo a ser selecionado.</param>
+        /// <returns>Um ActionResult representando o empréstimo selecionado.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult> Selecionar(int id)
         {
@@ -84,6 +108,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok(emprestimoDTO);
         }
 
+        /// <summary>
+        /// Recupera todos os empréstimos com suporte à paginação.
+        /// </summary>
+        /// <param name="paginationParams">Os parâmetros de paginação.</param>
+        /// <returns>Um ActionResult representando os empréstimos recuperados.</returns>
         [HttpGet]
         public async Task<ActionResult> SelecionarTodos([FromQuery]PaginationParams paginationParams)
         {
