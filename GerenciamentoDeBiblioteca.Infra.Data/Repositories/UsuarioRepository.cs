@@ -103,9 +103,12 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Repositories
             return await PaginationHelper.CreateAsync(query, pageNumber, pageSize);
         }
 
-        public async Task<IEnumerable<Usuario>> SelecionarTodosAsync()
+        public async Task<PagedList<Usuario>> SelecionarTodosAsync(int pageNumber, int pageSize)
         {
-            return await _context.Usuario.ToListAsync();
+            var query = _context.Usuario.OrderByDescending(x => x.Id).AsQueryable();
+            return await PaginationHelper.CreateAsync(query, pageNumber, pageSize);
         }
+
+       
     }
 }

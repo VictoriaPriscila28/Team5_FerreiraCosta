@@ -23,7 +23,7 @@ namespace GerenciamentoDeBiblioteca.Application.DTOs
         [MinLength(8, ErrorMessage = "A senha deve ter, no mínimo, 8 caracteres.")]
         [NotMapped]
         public string Password { get; set; }
-        [JsonIgnore]
+        //[JsonIgnore]
         public bool IsAdmin { get; set; }
         public bool Ativo { get; set; } = true;
     }

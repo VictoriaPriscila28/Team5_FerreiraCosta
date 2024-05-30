@@ -62,11 +62,13 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             {
                 return BadRequest("Ocorreu um erro ao cadastrar.");
             }
-            var token = _authenticateService.GenerateToken(usuario.Id, usuario.Email);
-             return new UserToken
-            {
-                Token = token,
-            };
+            //var token = _authenticateService.GenerateToken(usuario.Id, usuario.Email);
+            //return new UserToken
+            //{
+            // Token = token,
+            //};
+
+            return Ok(new { message = "Usuário incluído com sucesso!" });
 
         }
 

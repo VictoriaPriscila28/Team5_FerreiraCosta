@@ -63,11 +63,11 @@ namespace GerenciamentoDeBiblioteca.Infra.Ioc
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILivroRepository, LivroRepository>();
             services.AddScoped<IEmprestimoRepository, EmprestimoRepository>();
-<<<<<<< HEAD
+
             services.AddScoped<ISistemaRepository, SistemaRepository>();
-=======
+
             services.AddScoped<IMultaRepository, MultaRepository>();
->>>>>>> 351c3af81850a57d23ea43b12202aef1f001baa2
+
 
 
 
