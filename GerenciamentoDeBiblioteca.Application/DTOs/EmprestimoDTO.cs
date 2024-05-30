@@ -13,6 +13,7 @@ namespace GerenciamentoDeBiblioteca.Application.DTOs
         public int IdLivro { get; set; }
         public DateTime DataEmprestimo { get; set; }
         public DateTime DataEntrega { get; set; }
+        public DateTime? DataDevolucao { get; set; }
         public bool Entregue { get; set; }
 
         public ClienteDTO ClienteDTO { get; set; }
