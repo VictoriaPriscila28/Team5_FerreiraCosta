@@ -90,15 +90,14 @@ namespace GerenciamentoDeBiblioteca.Application.Services
                 (usuariosDTO, pageNumber, usuarios.TotalPages, usuarios.PageSize, usuarios.TotalCount);
         }
 
-        public async Task<IEnumerable<UsuarioDTO>> SelecionarTodosAsync()
-        {
-            var usuarios = await _repository.SelecionarTodosAsync();
-            return _mapper.Map<IEnumerable<UsuarioDTO>>(usuarios) ;
-        }
 
-        public Task<PagedList<UsuarioDTO>> SelecionarTodosAsync(int pageNumber, int pageSize)
+
+        public async Task<PagedList<UsuarioDTO>> SelecionarTodosAsync(int pageNumber, int pageSize)
         {
-            throw new NotImplementedException();
+            var usuarios = await _repository.SelecionarTodosAsync(pageNumber, pageSize);
+            var usuariosDTO = _mapper.Map<IEnumerable<UsuarioDTO>>(usuarios);
+            return new PagedList<UsuarioDTO>
+                (usuariosDTO, pageNumber, usuarios.TotalPages, usuarios.PageSize, usuarios.TotalCount);
         }
     }
 }

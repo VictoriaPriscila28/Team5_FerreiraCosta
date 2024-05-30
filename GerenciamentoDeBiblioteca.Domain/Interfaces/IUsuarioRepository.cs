@@ -15,7 +15,7 @@ namespace GerenciamentoDeBiblioteca.Domain.Interfaces
         Task<Usuario> Excluir(int id);
         Task<Usuario> SelecionarAsync(int id);
         Task<Usuario> SelecionarByCPFAsync(int id);
-        Task<IEnumerable<Usuario>> SelecionarTodosAsync();
+        Task<PagedList<Usuario>> SelecionarTodosAsync(int pageNumber, int pageSize);
         Task<bool> ExisteUsuarioCadastradoAsync();
         Task<PagedList<Usuario>> SelecionarByFiltroAsync(string nome, string email, bool? isAdmin, bool? isNotAdmin, bool? ativo, bool? inativo, int pageNumber, int pageSize);
     }

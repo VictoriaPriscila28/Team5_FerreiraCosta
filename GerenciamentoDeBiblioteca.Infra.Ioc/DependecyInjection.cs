@@ -63,7 +63,11 @@ namespace GerenciamentoDeBiblioteca.Infra.Ioc
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILivroRepository, LivroRepository>();
             services.AddScoped<IEmprestimoRepository, EmprestimoRepository>();
+
+            services.AddScoped<ISistemaRepository, SistemaRepository>();
+
             services.AddScoped<IMultaRepository, MultaRepository>();
+
 
 
 
@@ -74,7 +78,11 @@ namespace GerenciamentoDeBiblioteca.Infra.Ioc
             services.AddScoped<IAuthenticate, AuthenticateService>();
             services.AddScoped<ILivroService, LivroService>();
             services.AddScoped<IEmprestimoService, EmprestimoService>();
+
             services.AddScoped<IMultaRepository, MultaRepository>();
+
+            services.AddScoped<ISistemaService, SistemaService>();
+
 
 
 
