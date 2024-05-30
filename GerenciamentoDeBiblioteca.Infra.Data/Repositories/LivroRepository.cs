@@ -1,6 +1,8 @@
 ﻿using GerenciamentoDeBiblioteca.Domain.Entities;
 using GerenciamentoDeBiblioteca.Domain.Interfaces;
+using GerenciamentoDeBiblioteca.Domain.Pagination;
 using GerenciamentoDeBiblioteca.Infra.Data.Context;
+using GerenciamentoDeBiblioteca.Infra.Data.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -52,9 +54,65 @@ namespace GerenciamentoDeBiblioteca.Infra.Data.Repositories
             return await _context.Livro.Where(x => !x.Excluido).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Livro>> SelecionarTodosAsync()
+        public async Task<PagedList<Livro>> SelecionarByFiltroAsync(string nome, string autor, string editora, DateTime? anoPublicacao, string edicao, int pageNumber, int pageSize)
         {
-            return await _context.Livro.ToListAsync();
+            var query = _context.Livro.Where(x => !x.Excluido).OrderByDescending(x => x.Id).AsQueryable();
+
+            if (!string.IsNullOrEmpty(nome))
+            {
+                query = query.Where(x => x.LivroNome.ToLower().Equals(nome.ToLower())
+                                     || x.LivroNome.ToLower().Contains(nome.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(autor))
+            {
+                query = query.Where(x => x.LivroAutor.ToLower().Equals(autor.ToLower())
+                                     || x.LivroAutor.ToLower().Contains(autor.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(editora))
+            {
+                query = query.Where(x => x.LivroEditora.ToLower().Equals(editora.ToLower())
+                                     || x.LivroEditora.ToLower().Contains(editora.ToLower()));
+            }
+
+            if (anoPublicacao.HasValue)
+            {
+                query = query.Where(x => x.LivroAnoPublicacao == anoPublicacao.Value);
+            }
+
+            if (!string.IsNullOrEmpty(edicao))
+            {
+                query = query.Where(x => x.LivroEdicao.ToLower().Equals(edicao.ToLower())
+                                     || x.LivroEdicao.ToLower().Contains(edicao.ToLower()));
+            }
+
+            return await PaginationHelper.CreateAsync(query, pageNumber, pageSize);
+        }
+
+        public async Task<PagedList<Livro>> SelecionarByFiltroAsync(string termo, int pageNumber, int pageSize)
+        {
+            var query = _context.Livro.Where(x => !x.Excluido).OrderByDescending(x => x.Id).AsQueryable();
+
+            if (!string.IsNullOrEmpty(termo))
+            {
+                termo = termo.ToLower();
+
+                query = query.Where(x =>
+                    x.LivroNome.ToLower().Contains(termo) ||
+                    x.LivroAutor.ToLower().Contains(termo) ||
+                    x.LivroEditora.ToLower().Contains(termo) ||
+                    x.LivroEdicao.ToLower().Contains(termo)
+                );
+            }
+
+            return await PaginationHelper.CreateAsync(query, pageNumber, pageSize);
+        }
+
+        public async Task<PagedList<Livro>> SelecionarTodosAsync(int pageNumber, int pageSize)
+        {
+            var query = _context.Livro.Where(x => !x.Excluido).OrderByDescending(x => x.Id).AsQueryable();
+            return await PaginationHelper.CreateAsync(query, pageNumber, pageSize);
         }
     }
 }

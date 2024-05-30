@@ -1,4 +1,6 @@
-﻿using GerenciamentoDeBiblioteca.Application.DTOs;
+﻿using GerenciamentoDeBiblioteca.API.Extensions;
+using GerenciamentoDeBiblioteca.API.Models;
+using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
 using GerenciamentoDeBiblioteca.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -68,9 +70,38 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> SelecionarTodos()
+        public async Task<ActionResult> SelecionarTodos([FromQuery] PaginationParams paginationParams)
         {
-            var livrosDTO = await _livroService.SelecionarTodosAsync();
+            var livrosDTO = await _livroService.SelecionarTodosAsync(paginationParams.PageNumber,
+                paginationParams.PageSize);
+
+            Response.AddPaginationHeader(new PaginationHeader(paginationParams.PageNumber,
+                paginationParams.PageSize, livrosDTO.TotalCount, livrosDTO.TotalPages));
+
+            return Ok(livrosDTO);
+        }
+
+        [HttpGet("filtrar")]
+        public async Task<ActionResult> SelecionarTodosByFiltro([FromQuery] FiltroLivro filtroLivro)
+        {
+            var livrosDTO = await _livroService.SelecionarByFiltroAsync(filtroLivro.Nome, filtroLivro.Autor,
+                filtroLivro.Editora, filtroLivro.AnoPublicacao, filtroLivro.Edicao, filtroLivro.PageNumber,
+                filtroLivro.PageSize);
+
+            Response.AddPaginationHeader(new PaginationHeader(filtroLivro.PageNumber,
+                filtroLivro.PageSize, livrosDTO.TotalCount, livrosDTO.TotalPages));
+
+            return Ok(livrosDTO);
+        }
+
+        [HttpGet("pesquisar")]
+        public async Task<ActionResult> SelecionarByPesquisa([FromQuery] PesquisaTermo pesquisaTermo)
+        {
+            var livrosDTO = await _livroService.SelecionarByFiltroAsync(pesquisaTermo.Termo, pesquisaTermo.PageNumber, pesquisaTermo.PageSize);
+
+            Response.AddPaginationHeader(new PaginationHeader(pesquisaTermo.PageNumber,
+                pesquisaTermo.PageSize, livrosDTO.TotalCount, livrosDTO.TotalPages));
+
             return Ok(livrosDTO);
         }
 

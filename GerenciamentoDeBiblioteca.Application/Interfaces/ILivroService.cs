@@ -1,4 +1,5 @@
 ﻿using GerenciamentoDeBiblioteca.Application.DTOs;
+using GerenciamentoDeBiblioteca.Domain.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,10 @@ namespace GerenciamentoDeBiblioteca.Application.Interfaces
         Task<LivroDTO> Alterar(LivroDTO livroDTO);
         Task<LivroDTO> Excluir(int id);
         Task<LivroDTO> SelecionarAsync(int id);
-        Task<IEnumerable<LivroDTO>> SelecionarTodosAsync();
+        Task<PagedList<LivroDTO>> SelecionarTodosAsync(int pageNumber, int pageSize);
+        Task<PagedList<LivroDTO>> SelecionarByFiltroAsync(
+        string nome, string autor, string editora,
+        DateTime? anoPublicacao, string edicao, int pageNumber, int pageSize);
+        Task<PagedList<LivroDTO>> SelecionarByFiltroAsync(string termo, int pageNumber, int pageSize);
     }
 }

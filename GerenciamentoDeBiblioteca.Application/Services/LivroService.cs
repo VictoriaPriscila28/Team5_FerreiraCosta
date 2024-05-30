@@ -3,6 +3,7 @@ using GerenciamentoDeBiblioteca.Application.DTOs;
 using GerenciamentoDeBiblioteca.Application.Interfaces;
 using GerenciamentoDeBiblioteca.Domain.Entities;
 using GerenciamentoDeBiblioteca.Domain.Interfaces;
+using GerenciamentoDeBiblioteca.Domain.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,10 +49,26 @@ namespace GerenciamentoDeBiblioteca.Application.Services
             return _mapper.Map<LivroDTO>(livro);
         }
 
-        public async Task<IEnumerable<LivroDTO>> SelecionarTodosAsync()
+        public async Task<PagedList<LivroDTO>> SelecionarByFiltroAsync(string nome, string autor, string editora, DateTime? anoPublicacao, string edicao, int pageNumber, int pageSize)
         {
-            var livros = await _repository.SelecionarTodosAsync();
-            return _mapper.Map<IEnumerable<LivroDTO>>(livros);
+            var livros = await _repository.SelecionarByFiltroAsync(nome, autor, editora, anoPublicacao, edicao,
+                 pageNumber, pageSize);
+            var livrosDTO = _mapper.Map<IEnumerable<LivroDTO>>(livros);
+            return new PagedList<LivroDTO>(livrosDTO, pageNumber, pageSize, livros.TotalCount);
+        }
+
+        public async Task<PagedList<LivroDTO>> SelecionarByFiltroAsync(string termo, int pageNumber, int pageSize)
+        {
+            var livros = await _repository.SelecionarByFiltroAsync(termo, pageNumber, pageSize);
+            var livrosDTO = _mapper.Map<IEnumerable<LivroDTO>>(livros);
+            return new PagedList<LivroDTO>(livrosDTO, pageNumber, pageSize, livros.TotalCount);
+        }
+
+        public async Task<PagedList<LivroDTO>> SelecionarTodosAsync(int pageNumber, int pageSize)
+        {
+            var livros = await _repository.SelecionarTodosAsync(pageNumber, pageSize);
+            var livrosDTO = _mapper.Map<IEnumerable<LivroDTO>>(livros);
+            return new PagedList<LivroDTO>(livrosDTO, pageNumber, pageSize, livros.TotalCount);
         }
     }
 }
