@@ -38,7 +38,7 @@ O gerenciador de biblioteca oferece as seguintes funcionalidades:
 ## Tecnologias Utilizadas
 - **Linguagem de Programação**: C#
 - **Framework**: .NET Core 6
-- **Banco de Dados**:
+- **Banco de Dados**: SQL Server
 - **ORM**: Entity Framework Core
 - **Autenticação**: JWT (JSON Web Tokens)
 - **API RESTful**
