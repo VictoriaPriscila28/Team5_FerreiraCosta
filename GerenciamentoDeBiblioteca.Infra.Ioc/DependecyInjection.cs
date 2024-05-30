@@ -78,7 +78,11 @@ namespace GerenciamentoDeBiblioteca.Infra.Ioc
             services.AddScoped<IAuthenticate, AuthenticateService>();
             services.AddScoped<ILivroService, LivroService>();
             services.AddScoped<IEmprestimoService, EmprestimoService>();
+
+            services.AddScoped<IMultaRepository, MultaRepository>();
+
             services.AddScoped<ISistemaService, SistemaService>();
+
 
 
 

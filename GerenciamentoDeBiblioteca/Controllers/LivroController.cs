@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciamentoDeBiblioteca.API.Controllers
 {
+    /// <summary>
+    /// Controlador responsável por lidar com as solicitações relacionadas aos livros na API.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
 
@@ -19,6 +22,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             _livroService = livroService;
         }
 
+        /// <summary>
+        /// Inclui um novo livro.
+        /// </summary>
+        /// <param name="livroDTO">Os dados do livro a serem incluídos.</param>
+        /// <returns>Um ActionResult representando o resultado da inclusão.</returns>
         [HttpPost]
         public async Task<ActionResult> Incluir(LivroDTO livroDTO)
         {
@@ -31,6 +39,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok(new { message = "Livro incluído com sucesso!" });
         }
 
+        /// <summary>
+        /// Altera os dados de um livro existente.
+        /// </summary>
+        /// <param name="livroDTO">Os novos dados do livro.</param>
+        /// <returns>Um ActionResult representando o resultado da alteração.</returns>
         [HttpPut]
         public async Task<ActionResult> Alterar(LivroDTO livroDTO)
         {
@@ -43,6 +56,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok(new { message = "Livro alterado com sucesso!" });
         }
 
+        /// <summary>
+        /// Exclui um livro existente com base no Id.
+        /// </summary>
+        /// <param name="id">O Id do livro a ser excluído.</param>
+        /// <returns>Um ActionResult representando o resultado da exclusão.</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult> Excluir(int id)
         {
@@ -55,6 +73,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok(new { message = "Livro excluído com sucesso!" });
         }
 
+        /// <summary>
+        /// Seleciona um livro com base no Id.
+        /// </summary>
+        /// <param name="id">O Id do livro a ser selecionado.</param>
+        /// <returns>Um ActionResult representando o resultado da seleção.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult> Selecionar(int id)
         {
@@ -67,6 +90,10 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok(livroDTO);
         }
 
+        /// <summary>
+        /// Recupera todos os livros.
+        /// </summary>
+        /// <returns>Um ActionResult representando a lista de todos os livros.</returns>
         [HttpGet]
         public async Task<ActionResult> SelecionarTodos()
         {

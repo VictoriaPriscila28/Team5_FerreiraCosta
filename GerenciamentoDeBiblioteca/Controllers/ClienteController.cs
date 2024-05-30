@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciamentoDeBiblioteca.API.Controllers
 {
+    /// <summary>
+    /// Controlador responsável por lidar com as solicitações relacionadas aos clientes na API.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
 
@@ -23,6 +26,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             _usuarioService = usuarioService;
         }
 
+        /// <summary>
+        /// Endpoint para inclusão de um novo cliente.
+        /// </summary>
+        /// <param name="clienteDTO">Os dados do cliente a serem incluídos.</param>
+        /// <returns>Um ActionResult representando o resultado da inclusão.</returns>
         [HttpPost]
         public async Task<ActionResult>Incluir(ClienteDTO clienteDTO)
         {
@@ -34,7 +42,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok("Cliente incluído com sucesso!");
         }
 
-
+        /// <summary>
+        /// Endpoint para alterar os dados de um cliente existente.
+        /// </summary>
+        /// <param name="clienteDTO">Os novos dados do cliente.</param>
+        /// <returns>Um ActionResult representando o resultado da alteração.</returns>
         [HttpPut]
         public async Task<ActionResult> Alterar(ClienteDTO clienteDTO)
         {
@@ -46,6 +58,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok("Cliente alterado com sucesso!");
         }
 
+        /// <summary>
+        /// Endpoint para excluir um cliente existente.
+        /// </summary>
+        /// <param name="id">O Id do cliente a ser excluído.</param>
+        /// <returns>Um ActionResult representando o resultado da exclusão.</returns>
         [HttpDelete]
         public async Task<ActionResult> Excluir(int id)
         {
@@ -65,6 +82,12 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok("Cliente excluído com sucesso!");
         }
 
+        /// <summary>
+        /// Endpoint para selecionar um cliente com base no ID.
+        /// </summary>
+        /// <param name="id">O ID do cliente a ser selecionado.</param>
+        /// <returns>Um ActionResult representando o resultado da seleção.</returns>
+
         [HttpGet("{id}")]
         public async Task<ActionResult> Selecionar(int id )
         {
@@ -76,6 +99,11 @@ namespace GerenciamentoDeBiblioteca.API.Controllers
             return Ok(clienteDTO);
         }
 
+        /// <summary>
+        /// Endpoint para recuperar todos os clientes com suporte à paginação.
+        /// </summary>
+        /// <param name="paginationParams">Parâmetros de paginação para a solicitação.</param>
+        /// <returns>Um ActionResult representando a lista paginada de clientes.</returns>
         [HttpGet]
         public async Task<ActionResult> SelecionarTodos([FromQuery]PaginationParams paginationParams)
         {
